@@ -1,0 +1,8 @@
+node_modules
+npm-debug.log
+.DS_Store
+*.swp
+dist/*
+dist/*bundle.js
+dist/*.html
+config/*.env

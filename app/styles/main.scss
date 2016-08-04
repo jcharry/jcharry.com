@@ -1,0 +1,90 @@
+@import 'base/variables';
+@import url(https://fonts.googleapis.com/css?family=Roboto);
+
+@import 'components/project';
+@import 'components/project-list';
+@import 'components/canvas';
+@import 'components/me';
+@import 'components/fan-menu';
+@import 'components/social-media';
+@import 'components/card-list';
+
+html, body {
+    overflow: hidden;
+    max-width: 100vw;
+    max-height: 100vh;
+    margin: 0;
+}
+body {
+    font-family: Roboto;
+    background: $page-background-color;
+    padding: 0;
+    margin: 0;
+}
+
+.app {
+    height: 100vh;
+    overflow: hidden;
+    margin: 0;
+}
+
+.main {
+    height: 100vh;
+    overflow: hidden;
+    margin: 0;
+}
+
+p {
+    color: lightgray;
+}
+
+.home-text {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    padding-top: 70vh;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    opacity: 0;
+    position: fixed;
+    top: 0;
+    pointer-events: none;
+
+    transition: all 1s;
+
+    p {
+        color: $light-yellow-green;
+        padding: 0 5rem 0 5rem;
+        width: 250px;
+        margin: 0;
+        font-size: 1.2rem;
+    }
+
+    :last-child {
+        margin-top: 20px;
+        font-size: 1rem;
+    }
+}
+.back-button {
+    color: $light-yellow-green;
+    background-color: transparent;
+    border: none;
+    font-size: 16pt;
+    position: fixed;
+    top: 5px;
+    left: 10px;
+    padding: 0;
+    margin: 0;
+    width: 44px;
+    height: 44px;
+    line-height: 44px;
+    text-align: center;
+    z-index: 100;
+    transition: transform 0.5s;
+    transform-origin: center;
+}
+
+.back-button:hover {
+    transform: rotate(0.25turn);
+}
