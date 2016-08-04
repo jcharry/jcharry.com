@@ -122,25 +122,29 @@ class SelectedProject extends React.Component {
     handleClick(e) {
         e.stopPropagation();
     }
+    handleLinkClick(e) {
+        e.preventDefault();
+        window.open(e.currentTarget.href, '_blank');
+    }
 
     render() {
         var { project } = this.props;
         var renderDocumentationLinks = () => {
             if (typeof project.documentationLink === 'string') {
-                return project.documentationLink ? <a href={project.documentationLink}>Documentation</a> : null;
+                return project.documentationLink ? <a onClick={this.handleLinkClick} onTouchEnd={this.handleLinkClick} href={project.documentationLink}>Documentation</a> : null;
             } else {
                 return project.documentationLink.map((link, i) => {
-                    return <a href={link} key={i}>Documentation {i+1}</a>;
+                    return <a onClick={this.handleLinkClick} onTouchEnd={this.handleLinkClick} href={link} key={i}>Documentation {i+1}</a>;
                 });
             }
         };
 
         return (
-            <div onClick={this.propagateClick} className='selected-project-text'>
+            <div className='selected-project-text'>
                 <p>{project.desc}</p>
                 <p>Tech: {project.technologies}</p>
                 <p>{project.date}</p>
-                {project.projectLink && <a href={project.projectLink}>Project link</a>}
+                {project.projectLink && <a onClick={this.handleLinkClick} onTouchEnd={this.handleLinkClick} href={project.projectLink}>Project link</a>}
                 {renderDocumentationLinks()}
             </div>
         );

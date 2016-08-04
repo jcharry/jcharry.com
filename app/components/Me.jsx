@@ -22,6 +22,10 @@ export class Me extends React.Component {
         });
     }
 
+    handleLinkClick(e) {
+        e.preventDefault();
+        window.open(e.currentTarget.href, '_blank');
+    }
     render() {
         return (
             <div className='me-page'>
@@ -33,7 +37,7 @@ export class Me extends React.Component {
                     {styles =>
                     <div className='social-media-icons'>
                         {styles.map((style, i) => {
-                        return <a href={socialMedia[i].link} className='social-media-icon' style={style} key={i}>
+                        return <a onClick={this.handleLinkClick} onTouchEnd={this.handleLinkClick} href={socialMedia[i].link} className='social-media-icon' style={style} key={i}>
                             <img src={require('../images/'+socialMedia[i].imgsrc)} />
                             </a>;
                         })}

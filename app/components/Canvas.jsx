@@ -154,6 +154,7 @@ export class Canvas extends React.Component {
 
     componentDidUpdate(prevProps) {
         var { currentPage } = this.props;
+        this.me.currentPage = currentPage;
 
         if (prevProps.currentPage !== currentPage) {
             switch(currentPage) {

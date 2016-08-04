@@ -68,6 +68,7 @@ p {
 }
 .back-button {
     color: $light-yellow-green;
+    cursor: pointer;
     background-color: transparent;
     border: none;
     font-size: 16pt;
@@ -87,4 +88,8 @@ p {
 
 .back-button:hover {
     transform: rotate(0.25turn);
+}
+
+a:hover {
+    transform: scale(1.04);
 }

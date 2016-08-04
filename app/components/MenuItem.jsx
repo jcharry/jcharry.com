@@ -16,7 +16,7 @@ export class MenuItem extends React.Component {
 
         e.stopPropagation();
         if (title === 'Blog') {
-            window.location.href = 'http://blog.jcharry.com';
+            window.open('http://blog.jcharry.com', '_blank');
             return;
         }
         dispatch(actions.currentPage(title));

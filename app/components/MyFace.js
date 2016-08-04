@@ -40,6 +40,7 @@ export default class MyFace {
         this.timeToShake = 300;
         this.tweens = parent;
         this.container = container;
+        this.currentPage = 'home';
 
         this.sprite = new PIXI.Sprite.fromImage(profileSrc);
         this.sprite.height = this.setSpriteSize();
@@ -78,8 +79,19 @@ export default class MyFace {
         e.stopPropagation();
         console.log('clicked my face');
 
-        this.dispatch(actions.toggleFanDisplay());
-        console.log(e);
+        switch (this.currentPage) {
+            case 'home':
+                this.dispatch(actions.toggleFanDisplay());
+                break;
+            case 'Projects':
+                this.dispatch(actions.currentPage('home'));
+                break;
+            case 'Me':
+                this.dispatch(actions.currentPage('home'));
+                break;
+            default:
+                break;
+        }
     } 
 
     mouseOver(e) {
@@ -169,7 +181,8 @@ export default class MyFace {
         var x = this.sprite.x;
         var y = this.sprite.y;
         var xDist = window.innerWidth / 2 - x;
-        var yDist = window.innerHeight - y;
+        //var yDist = window.innerHeight - y;
+        var yDist = window.innerHeight /2 + 100;
         var startScale = this.sprite.scale.x;
         var finalScale = this.sprite.scale.x * 0.5;
         var scaleDist = finalScale - startScale;
@@ -197,7 +210,7 @@ export default class MyFace {
         var x = this.sprite.x;
         var y = this.sprite.y;
         var finalX = 100;
-        var finalY = 0;
+        var finalY = -100;
         var startScale = this.sprite.scale.x;
         var finalScale = this.sprite.scale.x * 0.5;
         var scaleDist = finalScale - startScale;
