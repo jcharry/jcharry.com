@@ -42,13 +42,22 @@ export class CardList extends React.Component {
                 title: 'About',
                 last: 'Skills',
                 children: [
-                    <div key='whoami'>
-                        <h3>Who Am I</h3>
-                        <p>Just a city boy</p>
+                    <div key='about'>
+                        <p>I'm self driven, and recklessly seek new skills, play with new technologies, and soak up as much as I can.</p>
                     </div>,
-                    <div key='whatelse'>
-                        <h3>What else</h3>
-                        <p>I've done flips off trees.</p>
+                    <div key='school'>
+                        <h3>School</h3>
+                        <p>MPS NYU ITP</p>
+                        <p>B.Sc Physics - Northeastern University</p>
+                    </div>,
+                    <div key='jobs'>
+                        <h3>Jobs</h3>
+                        <p>Makerbot - Test Engineer / Hardware Project Manager</p>
+                        <p>Utrect University - Research Assistant</p>
+                    </div>,
+                    <div key='hobbies'>
+                        <h3>Hobbies</h3>
+                        <p>Following along with MOOC's (currently taking Professor Ng's Machine Learning Course)</p>
                     </div>
                 ]
             }
