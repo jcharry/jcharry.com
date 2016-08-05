@@ -1,6 +1,7 @@
 var profileSrc = require('app/images/profile_clipped.png');
 import * as actions from 'app/actions/actions';
 import Tween from 'app/lib/Tween';
+import tweenModule from 'app/lib/tweenModule';
 
 /**********************************
  *
@@ -133,6 +134,24 @@ export default class MyFace {
                 that.sprite.on('touchstart', that.mouseDown);
             });
 
+        var alphaTween = tweenModule({
+            start: {
+                alpha: 0
+            },
+            change: {
+                alpha: 1
+            },
+            duration: 2000,
+            onComplete: function() {
+                console.log('alpha done');
+            },
+            parent: this.tweens,
+            easing: 'easeInOutQuad'
+        });
+
+        console.log(alphaTween);
+
+        this.tweens.push(alphaTween);
         this.tweens.push(yTween);
         this.tweens.push(xTween);
         this.tweens.push(rotTween);

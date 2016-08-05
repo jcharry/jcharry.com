@@ -30,7 +30,11 @@ export class Canvas extends React.Component {
                 if (prop === 'scale') {
                     that.me.sprite.scale.set(tween.scale);
                 } else {
-                    that.me.sprite[prop] = tween[prop];
+                    if (tween[prop] !== undefined) {
+                        that.me.sprite[prop] = tween[prop];
+                    } else {
+                        that.me.sprite[prop] = tween.props[prop];
+                    }
                 }
             });
         });
