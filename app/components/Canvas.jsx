@@ -6,8 +6,8 @@ import Pixi from 'pixi.js';
 import * as actions from 'app/actions/actions';
 import Tween from 'app/lib/Tween';
 import MyFace from 'app/components/MyFace';
-import ParticleSystem from 'app/lib/ParticleSystem';
-import Particle from 'app/lib/Particle';
+import particleSystem from 'app/lib/ParticleSystem';
+import particle from 'app/lib/Particle';
 
 export class Canvas extends React.Component {
     constructor(props) {
@@ -17,7 +17,6 @@ export class Canvas extends React.Component {
         this.handleWindowResize = this.handleWindowResize.bind(this);
 
         this.tweens = [];
-
     }
 
     // Pixi.js animation loop
@@ -126,24 +125,33 @@ export class Canvas extends React.Component {
         this.bg.anchor.x = 0.5;
         this.bg.anchor.y = 0.5;
         this.stage.addChild(this.bg);
-        this.me = new MyFace(this.stage, this.tweens, dispatch);
         //this.me.sprite.zOrder = 100;
         window.addEventListener('resize', this.handleWindowResize);
 
-        this.system = new ParticleSystem(null, this.me.sprite);
-        var numParticles = 200;
+        this.system = particleSystem(this.stage);
+        var numParticles = 50;
         var particleDist = (window.innerWidth - 10) / numParticles;
         for (var i = 0; i < numParticles; i++) {
-            this.system.addParticle(this.stage, new Particle(i * particleDist, Math.random() * 20, 30, this.me.sprite));
+            this.system.addParticle(i * particleDist, Math.random() * 100 + 30, Math.random() * 22 + 8);
         }
         this.stage.addChild(this.system.graphics);
         window.particleSystem = this.system;
+        this.me = new MyFace(this.stage, this.tweens, dispatch);
+        this.system.addCollider(this.me.sprite);
 
         //this.drawBackground();
 
+        //this.system.applyForce({x: -0.01, y:-0.01});
         // Sets up tweens for entering the screen
         // shoudl only run once on intial component load
         //this.me.enter();
+        //setInterval(() => {
+            //this.system.applyForce({x: 0.05*forceDir});
+            //setTimeout(() => {
+                //this.system.setAcceleration({x: 0});
+            //},5000);
+            //forceDir = -forceDir;
+        //}, 10000);
 
         var that = this;
         requestAnimationFrame(this.animate);

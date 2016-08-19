@@ -109,7 +109,7 @@ export default class MyFace {
 
     // Animation that runs on page load
     // My Face bouncing into the center of page
-    enter() {
+    enter(cb) {
         var that = this;
         var yTween = new Tween(this.tweens)
             .duration(1900)
@@ -131,6 +131,9 @@ export default class MyFace {
                 that.sprite.on('mouseout', that.mouseOut);
                 that.sprite.on('mousedown', that.mouseDown);
                 that.sprite.on('touchstart', that.mouseDown);
+                if (cb) {
+                    cb();
+                }
             });
 
         this.tweens.push(yTween);
