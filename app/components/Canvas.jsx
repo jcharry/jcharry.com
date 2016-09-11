@@ -102,7 +102,7 @@ export class Canvas extends React.Component {
 
         var h = window.innerHeight + 300;
         var w = window.innerWidth + 300;
-        this.renderer = PIXI.autoDetectRenderer(w, h, {transparent: true});
+        this.renderer = PIXI.autoDetectRenderer(w, h, {transparent: true, antialias: true});
         this._elt.appendChild(this.renderer.view);
 
         // create the root of the scene graph
