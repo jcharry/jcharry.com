@@ -53,7 +53,6 @@ export class Main extends React.Component {
             //$('html, body').mousewheel(this.mouseWheelHandler);
             //$('html, body').on('mousewheel', this.mouseWheelHandler);
             //console.log($('html, body').mousewheel);
-            
         } else {
             if (window.removeEventListener) {
                 // IE9, Chrome, Safari, Opera
@@ -85,6 +84,7 @@ export class Main extends React.Component {
                 <div style={{opacity: currentPage === 'home' ? 1 : 0}} className='home-text'>
                     <p>Hi, I'm Jamie</p>
                     <p>Full Stack Web Developer & Creative Coder, Currently purusing MPS at NYU ITP</p>
+                    <img src={require('../images/clickme.png')} className='click-me' />
                 </div>
                 {currentPage === 'Projects' && <ProjectList projects={projects}/>}
                 {currentPage === 'Me' && <Me />}

@@ -8,12 +8,17 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        
         position: fixed;
         z-index: 0;
         top: 50%;
         margin-top: -25px;
         left: 50%;
         margin-left: -25px;
+        transition: border 0.5s;
+    }
+
+    .menu-item:hover {
+        opacity: 0.5;
+        border-bottom: 1px solid $light-yellow-green;
     }
 }

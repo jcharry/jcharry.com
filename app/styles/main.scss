@@ -61,11 +61,24 @@ p {
         font-size: 1.2rem;
     }
 
+    .click-me {
+        position: absolute;
+        font-size: 8pt;
+        top: 72%;
+        left: 54%;
+        padding: 0;
+        margin: 0;
+        width: 100px;
+        opacity: 0;
+        transition: opacity 0.5s;
+    }
+
     :last-child {
         margin-top: 20px;
         font-size: 1rem;
     }
 }
+
 .back-button {
     color: $light-yellow-green;
     cursor: pointer;

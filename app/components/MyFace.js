@@ -131,6 +131,8 @@ export default class MyFace {
                 that.sprite.on('mouseout', that.mouseOut);
                 that.sprite.on('mousedown', that.mouseDown);
                 that.sprite.on('touchstart', that.mouseDown);
+
+                document.getElementsByClassName('click-me')[0].style.opacity = 1;
                 if (cb) {
                     cb();
                 }
