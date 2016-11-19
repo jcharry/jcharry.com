@@ -92,19 +92,20 @@ export default class MyFace {
             default:
                 break;
         }
-    } 
+    }
 
     mouseOver(e) {
         if (!this.isShaking) {
             this.isShaking = true;
-        
             this.shake();
         }
+        document.body.style.cursor = 'pointer';
     }
 
     mouseOut() {
         //this.sprite.scale.x = this.sprite.scale.x / 1.1;
         //this.sprite.scale.y = this.sprite.scale.y / 1.1;
+        document.body.style.cursor = 'default';
     }
 
     // Animation that runs on page load

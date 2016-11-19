@@ -1,5 +1,10 @@
 export const selectedProjectReducer = (state = {id: '', index: 1000} , action) => {
     switch (action.type) {
+        case 'CLEAR_SELECTED_PROJECT':
+            return {
+                ...state,
+                id: ''
+            };
         case 'TOGGLE_SELECTED_PROJECT':
             return {
                 ...state,

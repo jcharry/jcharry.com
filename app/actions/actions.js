@@ -1,3 +1,9 @@
+export const clearSelectedProject = () => {
+    return {
+        type: 'CLEAR_SELECTED_PROJECT'
+    };
+};
+
 export const toggleSelectedProject = (id, index) => {
     return {
         type: 'TOGGLE_SELECTED_PROJECT',

@@ -1,14 +1,21 @@
+.project-list-filter {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+}
 .project-list {
+    margin-top: 100px;
     position: absolute;
     z-index: 10;
     top: 0;
     /*left: 0px;*/
-    height: 100vh;
+    width: 100vw;
     display: flex;
     justify-content: center;
     flex-direction: row;
     align-items: center;
-    overflow-y: hidden;
+    flex-wrap: wrap;
+    // overflow-y: hidden;
     /*overflow: hidden;*/
 
     button {

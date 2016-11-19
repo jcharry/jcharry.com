@@ -53,47 +53,41 @@ export class Canvas extends React.Component {
         this.frame = requestAnimationFrame(this.animate);
     }
 
-    setupGraphics() {
-        this.graphics = new PIXI.Graphics();
-    }
+    // setupGraphics() {
+    //     this.graphics = new PIXI.Graphics();
+    // }
 
-    cantor(x, y, len) {
-        y += 20;
-        this.graphics.moveTo(x, y);
-        this.graphics.lineTo(x + len, y);
-
-        if (len > 1) {
-            var randomHex = '0x'+Math.floor(Math.random()*16777215).toString(16);
-            console.log(randomHex);
-            this.graphics.lineStyle(2, randomHex, 1);
-            this.cantor(x, y, len / 3);
-            this.cantor(x + len*2/3, y, len/3);
-        }
-    }
-    drawCircle(x, y, r) {
-        this.graphics.drawCircle(x, y, r);
-
-        r = r/2;
-        if (r > 2) {
-            //this.drawCircle(x - r, y, r );
-            //this.drawCircle(x + r, y, r );
-            this.drawCircle(x, y + r, r );
-            this.drawCircle(x, y - r, r );
-        }
-    }
+    // cantor(x, y, len) {
+    //     y += 20;
+    //     this.graphics.moveTo(x, y);
+    //     this.graphics.lineTo(x + len, y);
+    //
+    //     if (len > 1) {
+    //         var randomHex = '0x'+Math.floor(Math.random()*16777215).toString(16);
+    //         console.log(randomHex);
+    //         this.graphics.lineStyle(2, randomHex, 1);
+    //         this.cantor(x, y, len / 3);
+    //         this.cantor(x + len*2/3, y, len/3);
+    //     }
+    // }
+    // drawCircle(x, y, r) {
+    //     this.graphics.drawCircle(x, y, r);
+    //
+    //     r = r/2;
+    //     if (r > 2) {
+    //         //this.drawCircle(x - r, y, r );
+    //         //this.drawCircle(x + r, y, r );
+    //         this.drawCircle(x, y + r, r );
+    //         this.drawCircle(x, y - r, r );
+    //     }
+    // }
 
     drawBackground(time) {
-
-        //this.graphics.clear();
-
         var x = 0;
         var y = 10;
         var r = 800;
         var len = window.innerWidth;
-        this.graphics.lineStyle(2, 0xffffff, 1);
-        //this.drawCircle(x, y, r);
-        //this.cantor(x, y, len);
-
+        // this.graphics.lineStyle(2, 0xffffff, 1);
     }
 
 
@@ -109,7 +103,7 @@ export class Canvas extends React.Component {
         this.stage = new PIXI.Container();
         this.stage.width = w;
         this.stage.height = h;
-        this.graphics = new PIXI.Graphics();
+        // this.graphics = new PIXI.Graphics();
         //this.stage.interactive = true;
         //this.stage.hitArea = new PIXI.Rectangle(0, 0, window.innerWidth, window.innerHeight);
 
@@ -124,7 +118,7 @@ export class Canvas extends React.Component {
         this.bg.y = window.innerHeight / 2;
         this.bg.anchor.x = 0.5;
         this.bg.anchor.y = 0.5;
-        this.stage.addChild(this.bg);
+        // this.stage.addChild(this.bg);
         //this.me.sprite.zOrder = 100;
         window.addEventListener('resize', this.handleWindowResize);
 
@@ -132,14 +126,14 @@ export class Canvas extends React.Component {
         var numParticles = 50;
         var particleDist = (window.innerWidth - 10) / numParticles;
         for (var i = 0; i < numParticles; i++) {
-            this.system.addParticle(i * particleDist, Math.random() * 100 + 30, Math.random() * 22 + 8);
+            this.system.addParticle(i * particleDist, Math.random() * 100 + 30, Math.random() * 10 + 8);
         }
         this.stage.addChild(this.system.graphics);
         window.particleSystem = this.system;
         this.me = new MyFace(this.stage, this.tweens, dispatch);
         this.system.addCollider(this.me.sprite);
 
-        //this.drawBackground();
+        this.drawBackground();
 
         //this.system.applyForce({x: -0.01, y:-0.01});
         // Sets up tweens for entering the screen
@@ -191,6 +185,7 @@ export class Canvas extends React.Component {
         this.renderer.view.width = window.innerWidth;
         this.renderer.view.height = window.innerHeight;
         this.renderer.resize(window.innerWidth, window.innerHeight);
+        this.me.homePage();
     }
 
     render() {
@@ -205,7 +200,7 @@ export default connect((state) => {
     return {
         currentPage: state.currentPage
     };
-})(Canvas); 
+})(Canvas);
 
 
 

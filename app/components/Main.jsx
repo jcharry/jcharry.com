@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { hashHistory } from 'react-router';
 
 import $ from 'jquery';
-require('jquery-mousewheel');
+// require('jquery-mousewheel');
 
 import * as actions from 'app/actions/actions';
 
@@ -18,21 +18,22 @@ export class Main extends React.Component {
     constructor(props) {
         super(props);
 
+        this.handleCloseButton = this.handleCloseButton.bind(this);
         //this.handleMouseWheel = this.handleMouseWheel.bind(this);
     }
 
-    mouseWheelHandler(event, delta) {
-        this.scrollLeft -= (delta);
-        event.preventDefault();
-    }
-
-    scrollHorizontally(e) {
-        e = window.event || e;
-        var delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)));
-        document.documentElement.scrollLeft -= (delta*40); // Multiplied by 40
-        document.body.scrollLeft -= (delta*40); // Multiplied by 40
-        e.preventDefault();
-    }
+    // mouseWheelHandler(event, delta) {
+    //     this.scrollLeft -= (delta);
+    //     event.preventDefault();
+    // }
+    //
+    // scrollHorizontally(e) {
+    //     e = window.event || e;
+    //     var delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)));
+    //     document.documentElement.scrollLeft -= (delta*40); // Multiplied by 40
+    //     document.body.scrollLeft -= (delta*40); // Multiplied by 40
+    //     e.preventDefault();
+    // }
 
     componentDidUpdate() {
         var { fanDisplayOpen, currentPage } = this.props;
@@ -40,38 +41,48 @@ export class Main extends React.Component {
 
         // If we're looking at projects, set mousewheel to scroll
         // horizontally
-        if (currentPage === 'Projects') {
-            if (window.addEventListener) {
-                // IE9, Chrome, Safari, Opera
-                window.addEventListener("mousewheel", this.scrollHorizontally, false);
-                // Firefox
-                window.addEventListener("DOMMouseScroll", this.scrollHorizontally, false);
-            } else {
-                // IE 6/7/8
-                window.attachEvent("onmousewheel", this.scrollHorizontally);
-            }
-            //$('html, body').mousewheel(this.mouseWheelHandler);
-            //$('html, body').on('mousewheel', this.mouseWheelHandler);
-            //console.log($('html, body').mousewheel);
-        } else {
-            if (window.removeEventListener) {
-                // IE9, Chrome, Safari, Opera
-                window.removeEventListener("mousewheel", this.scrollHorizontally, false);
-                // Firefox
-                window.removeEventListener("DOMMouseScroll", this.scrollHorizontally, false);
-            } else {
-                // IE 6/7/8
-                window.detachEvent("onmousewheel", this.scrollHorizontally);
-            }
-            //$('html, body').off('mousewheel', this.mouseWheelHandler);
-            console.log(window.mousewheel);
-            //console.log($('html, body').mousewheel);
-        }
+        // if (currentPage === 'Projects') {
+        //     if (window.addEventListener) {
+        //         // IE9, Chrome, Safari, Opera
+        //         window.addEventListener("mousewheel", this.scrollHorizontally, false);
+        //         // Firefox
+        //         window.addEventListener("DOMMouseScroll", this.scrollHorizontally, false);
+        //     } else {
+        //         // IE 6/7/8
+        //         window.attachEvent("onmousewheel", this.scrollHorizontally);
+        //     }
+        //     //$('html, body').mousewheel(this.mouseWheelHandler);
+        //     //$('html, body').on('mousewheel', this.mouseWheelHandler);
+        //     //console.log($('html, body').mousewheel);
+        // } else {
+        //     if (window.removeEventListener) {
+        //         // IE9, Chrome, Safari, Opera
+        //         window.removeEventListener("mousewheel", this.scrollHorizontally, false);
+        //         // Firefox
+        //         window.removeEventListener("DOMMouseScroll", this.scrollHorizontally, false);
+        //     } else {
+        //         // IE 6/7/8
+        //         window.detachEvent("onmousewheel", this.scrollHorizontally);
+        //     }
+        //     //$('html, body').off('mousewheel', this.mouseWheelHandler);
+        //     console.log(window.mousewheel);
+        //     //console.log($('html, body').mousewheel);
+        // }
+        //
+        // // Disable All touch events
+        // $('html, body').on('touchstart touchmove', (e) => {
+        //     e.preventDefault();
+        // });
+    }
 
-        // Disable All touch events
-        $('html, body').on('touchstart touchmove', (e) => {
-            e.preventDefault();
-        });
+    handleCloseButton(e) {
+        const { dispatch, selectedProject, currentPage } = this.props;
+        if (selectedProject.id !== '') {
+            dispatch(actions.clearSelectedProject());
+        } else if (selectedProject.id === '' && currentPage !== 'home') {
+            console.log('should go home');
+            dispatch(actions.currentPage('home'));
+        }
     }
 
     render() {
@@ -80,7 +91,7 @@ export class Main extends React.Component {
             <div className='main'>
                 <FanMenu />
                 <Canvas />
-                {currentPage !== 'home' && <button className='back-button' onTouchStart={() => {dispatch(actions.currentPage('home'));}} onClick={() => {dispatch(actions.currentPage('home'));}}>x</button>}
+                {currentPage !== 'home' && <button className='back-button' onTouchStart={this.handleCloseButton} onClick={this.handleCloseButton}>x</button>}
                 <div style={{opacity: currentPage === 'home' ? 1 : 0}} className='home-text'>
                     <p>Hi, I'm Jamie</p>
                     <p>Full Stack Web Developer & Creative Coder, Currently purusing MPS at NYU ITP</p>
@@ -97,7 +108,8 @@ export class Main extends React.Component {
 export default connect((state) => {
     return {
         fanDisplayOpen: state.fanDisplayOpen,
-        currentPage: state.currentPage
+        currentPage: state.currentPage,
+        selectedProject: state.selectedProject
     };
 })(Main);
 

@@ -44,7 +44,7 @@ const particleSystem = function(stage) {
         particles.forEach(function(p) {
             let nearby = p.findNearbyParticles(particles);
             nearby.forEach((np) => {
-                graphics.lineStyle(1, 0xccffff);
+                graphics.lineStyle(0.5, 0xccffff, 0.5);
                 graphics.moveTo(p.sprite.x, p.sprite.y);
                 graphics.lineTo(np.sprite.x, np.sprite.y);
             });

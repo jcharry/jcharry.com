@@ -151,14 +151,12 @@ const particle = function(x, y, r) {
             return false;
         }
     };
-    
 
     const findNearbyParticles = function(particleList) {
         let nearby = [];
         let collisions = [];
         particleList.forEach(function(p) {
             if (sprite.x !== p.sprite.x && sprite.y !== p.sprite.y) {
-                
                 // If we're 30 pixels away from another particle...
                 if(checkForThresholdDist(p, 50)) {
                     nearby.push(p);

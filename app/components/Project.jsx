@@ -28,7 +28,6 @@ export class Project extends React.Component {
             //}
 
             dispatch(actions.toggleSelectedProject(project.id, index));
-            
             //var startPos = window.scrollX;
             //var finalPos = this._elt.offsetLeft - offset;
             //var dist = finalPos - startPos;
@@ -83,19 +82,41 @@ export class Project extends React.Component {
             }
         };
 
-        var classes = selectedProject.id === project.id ? 'project selected-project' : 'project';
+        var classes = '';
+        if (selectedProject.id === '') {
+            classes = 'project';
+        } else {
+            classes = selectedProject.id === project.id ? 'project selected-project' : 'project blurred';
+            // if (window.innerWidth > window.innerHeight) {
+            //     classes += ' width-greater';
+            // } else {
+            //     classes += ' height-greater';
+            // }
+        }
         return (
-            <Motion defaultStyle={{width: 200}} style={this.getStyles()}>
-                {interpolatingStyle => 
-                <div ref={(c) => { this._elt = c; }} style={{...interpolatingStyle, ...style}} className={classes}>
-                    <h4>{project.title}</h4>
-                    <img onTouchEnd={this.handleClick} onClick={this.handleClick} style={{opacity: selectedProject.id === project.id ? 0.2 : 1, width: interpolatingStyle.width, height: interpolatingStyle.width}} src={img}/>
-                    {selectedProject.id === project.id ? 
+            <Motion defaultStyle={{width: 200, opacity: 1}} style={this.getStyles()}>
+                {interpolatingStyle =>
+                <div style={{...interpolatingStyle, ...style}}
+                    className={classes}
+                    onTouchEnd={this.handleClick}
+                    onClick={this.handleClick}>
+                    <h3 className='title-text'>{project.title}</h3>
+                    <div className='prj-img-bg'
+                            style={{
+                                width: interpolatingStyle.width
+                                }}>
+                        <img className='prj-img'
+                            style={{
+                                opacity: selectedProject.id === project.id ? 0.3 : 1
+                                }}
+                            src={img}/>
+                    </div>
+                    {selectedProject.id === project.id ?
                         <div>
                             <SelectedProject project={project} />
-                        </div> : 
+                        </div> :
                         <div style={{position: 'relative'}}>
-                            <p>{project.blurb}</p>
+                            <p className='title-text'>{project.blurb}</p>
                         </div>
                     }
                 </div>
@@ -141,6 +162,7 @@ class SelectedProject extends React.Component {
 
         return (
             <div className='selected-project-text'>
+                <div />
                 <p>{project.desc}</p>
                 <p>Tech: {project.technologies}</p>
                 <p>{project.date}</p>
