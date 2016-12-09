@@ -16,6 +16,24 @@ export const selectedProjectReducer = (state = {id: '', index: 1000} , action) =
     }
 };
 
+export const projectsReducer = (state = {}, action) => {
+    switch (action.type) {
+        case 'INITIALIZE_PROJECTS':
+            return {...action.projects};
+        default:
+            return state;
+    }
+};
+
+export const projectFilterReducer = (state = 'all', action) => {
+    switch (action.type) {
+        case 'SET_PROJECT_LIST_FILTER':
+            return action.category;
+        default:
+            return state;
+    }
+};
+
 export const isDraggingReducer = (state = false, action) => {
     switch (action.type) {
         case 'START_DRAGGING':
@@ -27,7 +45,7 @@ export const isDraggingReducer = (state = false, action) => {
     }
 };
 
-export const cardReducer = (state = {id: 'Skills', dir: 'forward'}, action) => {
+export const cardReducer = (state = {id: 'About', dir: 'forward'}, action) => {
     switch (action.type) {
         case 'SHOW_NEXT_CARD':
             return {
@@ -39,7 +57,7 @@ export const cardReducer = (state = {id: 'Skills', dir: 'forward'}, action) => {
     }
 };
 
-export const currentPageReducer = (state = 'home', action) => {
+export const currentPageReducer = (state = '', action) => {
     switch (action.type) {
         case 'SET_CURRENT_PAGE':
             return action.pageName;

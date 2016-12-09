@@ -1,4 +1,4 @@
-var profileSrc = require('app/images/profile_clipped.png');
+var profileSrc = `/${require('app/images/profile_clipped.png')}`;
 import * as actions from 'app/actions/actions';
 import Tween from 'app/lib/Tween';
 
@@ -45,8 +45,9 @@ export default class MyFace {
         this.sprite = new PIXI.Sprite.fromImage(profileSrc);
         this.sprite.height = this.setSpriteSize();
         this.sprite.width = this.setSpriteSize();
-        this.sprite.x = 0;
-        this.sprite.y = -300;
+        this.sprite.scale.x = 0.5;
+        this.sprite.x = window.innerWidth / 2;
+        this.sprite.y = -300; //-300;
         this.sprite.anchor.x = 0.5;
         this.sprite.anchor.y = 0.5;
         this.sprite.interactive = true;
@@ -59,6 +60,12 @@ export default class MyFace {
         this.mouseOver = this.mouseOver.bind(this);
         this.mouseOut = this.mouseOut.bind(this);
         this.mouseDown = this.mouseDown.bind(this);
+
+        // Add mouse handlers
+        this.sprite.on('mouseover', this.mouseOver);
+        this.sprite.on('mouseout', this.mouseOut);
+        this.sprite.on('mousedown', this.mouseDown);
+        this.sprite.on('touchstart', this.mouseDown);
         window.me = this;
     }
 
@@ -66,13 +73,6 @@ export default class MyFace {
         // Step function - on small screens
         var ww = window.innerWidth;
         return 200;
-        //if (ww > 1000) {
-            //return 200;
-        ////} else if (ww > 500) {
-            ////return 200;
-        //} else {
-            //return 200;
-        //}
     }
 
     mouseDown(e) {
@@ -103,8 +103,6 @@ export default class MyFace {
     }
 
     mouseOut() {
-        //this.sprite.scale.x = this.sprite.scale.x / 1.1;
-        //this.sprite.scale.y = this.sprite.scale.y / 1.1;
         document.body.style.cursor = 'default';
     }
 
@@ -116,11 +114,14 @@ export default class MyFace {
             .duration(1900)
             .easing('easeOutBouce')
             .start({ y: 0 })
-            .end({ y: window.innerHeight / 2 });
+            .end({ y: window.innerHeight / 2 })
+            .complete(() => {
+                document.getElementsByClassName('click-me')[0].style.opacity = 1;
+            });
         var xTween = new Tween(this.tweens)
             .duration(2000)
             .easing('none')
-            .start({ x: 0 })
+            .start({ x: that.sprite.x })
             .end({ x: window.innerWidth / 2 });
         var rotTween = new Tween(this.tweens)
             .duration(2000)
@@ -133,18 +134,15 @@ export default class MyFace {
                 that.sprite.on('mousedown', that.mouseDown);
                 that.sprite.on('touchstart', that.mouseDown);
 
-                document.getElementsByClassName('click-me')[0].style.opacity = 1;
                 if (cb) {
                     cb();
                 }
             });
 
         this.tweens.push(yTween);
-        this.tweens.push(xTween);
-        this.tweens.push(rotTween);
     }
 
-    // Looks like more code than it is, 
+    // Looks like more code than it is,
     // just blows up because of how Tweens are instantiated
     // Shakes the face around a bit
     shake() {
@@ -186,11 +184,13 @@ export default class MyFace {
     projectsPage() {
         var x = this.sprite.x;
         var y = this.sprite.y;
-        var xDist = window.innerWidth / 2 - x;
+        var finalX = window.innerWidth / 2;
+        var finalY = window.innerHeight + 300;
+        var xDist = finalX - x;
         //var yDist = window.innerHeight - y;
-        var yDist = window.innerHeight /2 + 100;
+        var yDist = finalY - y;
         var startScale = this.sprite.scale.x;
-        var finalScale = this.sprite.scale.x * 0.5;
+        var finalScale = 0.5;
         var scaleDist = finalScale - startScale;
 
         var scaleTween = new Tween(this.tweens)
@@ -218,11 +218,42 @@ export default class MyFace {
         var finalX = 100;
         var finalY = -100;
         var startScale = this.sprite.scale.x;
-        var finalScale = this.sprite.scale.x * 0.5;
+        var finalScale = 0.5;
         var scaleDist = finalScale - startScale;
         // Distance to move to the center of the page
         //var xDist = finalX - x;
         var xDist = 0;
+        var yDist = finalY - y;
+        var mePageTween = new Tween(this.tweens)
+            .duration(1000)
+            .start({ x, y })
+            .end({ x: xDist, y: yDist})
+            .easing('easeInOutQuad')
+            .complete(() => {
+                console.log('tween done');
+            });
+
+        var scaleTween = new Tween(this.tweens)
+            .duration(1000)
+            .start({ scale: startScale })
+            .end({ scale: scaleDist })
+            .easing('easeInOutQuad');
+
+        this.tweens.push(mePageTween);
+        this.tweens.push(scaleTween);
+    }
+
+    contactPage() {
+        var x = this.sprite.x;
+        var y = this.sprite.y;
+        var finalX = window.innerWidth + 100;
+        var finalY = window.innerHeight / 2;
+        var startScale = this.sprite.scale.x;
+        var finalScale = 0.5;
+        var scaleDist = finalScale - startScale;
+        // Distance to move to the center of the page
+        //var xDist = finalX - x;
+        var xDist = finalX - x;
         var yDist = finalY - y;
         var mePageTween = new Tween(this.tweens)
             .duration(1000)
@@ -254,7 +285,7 @@ export default class MyFace {
         var yDist = window.innerHeight / 2 - y;
 
         var startScale = this.sprite.scale.x;
-        var finalScale = 0.2;
+        var finalScale = 1;
         var scaleDist = finalScale - startScale;
 
         var homePageTween = new Tween(this.tweens)

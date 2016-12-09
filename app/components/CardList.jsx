@@ -6,14 +6,38 @@ import { Motion, TransitionMotion, StaggeredMotion, spring } from 'react-motion'
 import * as actions from 'app/actions/actions';
 
 import Card from 'app/components/Card';
+import ExternalLink from 'app/components/ExternalLink';
 
 export class CardList extends React.Component {
     constructor(props) {
         super(props);
         this.cards = [
             {
+                title: 'About',
+                next: 'Skills',
+                children: [
+                    <div key='whoami'>
+                        <h3><pre><code>$ whoami</code></pre></h3>
+                        <p>jamiecharry</p>
+                    </div>,
+                    <div key='man'>
+                        <h3><pre><code>$ man jamiecharry</code></pre></h3>
+                        <p>I grew up modding Xboxes for fun, then studied Physics because it's fun, now I build web applications because it's, you guessed it, super fun.</p>
+                        <br />
+                        <p>I explore the intersection of technology, education, elucidation, and behavior change</p>
+                        <br />
+                        <p>Utimately I want people to be more thoughtful of the world around them</p>
+                    </div>,
+                    <div key='whereis'>
+                        <h3><pre><code>$ whereis jamiecharry</code></pre></h3>
+                        <p>/brooklyn/ny/</p>
+                    </div>
+                ]
+            },
+            {
                 title: 'Skills',
-                next: 'About',
+                next: 'Resume',
+                last: 'About',
                 children: [
                     <div key='proficient'>
                         <h3>Proficient</h3>
@@ -39,7 +63,7 @@ export class CardList extends React.Component {
                 ]
             },
             {
-                title: 'About',
+                title: 'Resume',
                 last: 'Skills',
                 children: [
                     <div key='about'>

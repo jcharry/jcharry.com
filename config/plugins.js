@@ -1,5 +1,6 @@
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+var CopyWebpackPlugin = require('copy-webpack-plugin');
 var path = require('path');
 var envFile = require('node-env-file');
 
@@ -14,7 +15,7 @@ try {
 } catch(e) {
 }
 
-// Returns a concatenated list of plugins depending on 
+// Returns a concatenated list of plugins depending on
 // whether environment is development or production
 var configure = () => {
 
@@ -28,6 +29,9 @@ var configure = () => {
         new HtmlWebpackPlugin({
             template: './app/index.html'
         }),
+        new CopyWebpackPlugin([
+            { from: './app/images/', to: './images/' }
+        ]),
         new webpack.DefinePlugin({
             'process.env': {
                 NODE_ENV: JSON.stringify(process.env.NODE_ENV),

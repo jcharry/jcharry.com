@@ -7,8 +7,12 @@ import router from 'app/router/index';
 import Main from 'app/components/Main';
 
 // REDUX
+import { initializeProjects } from 'app/actions/actions';
 import configure from './store/configureStore';
 var store = configure();
+
+import projects from 'app/db/projects';
+store.dispatch(initializeProjects(projects));
 
 // Main styles
 import './styles/main.scss';
@@ -16,7 +20,7 @@ import './styles/main.scss';
 ReactDOM.render(
     <div>
         <Provider store={store}>
-            <Main />
+            {router}
         </Provider>
     </div>,
     document.getElementById('app')

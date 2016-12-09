@@ -1,10 +1,12 @@
 .fan-menu {
     .menu-item {
+        display: flex;
+        flex-direction: column;
         cursor: pointer;
         width: 50px;
         height: 50px;
-        border-radius: 50%;
-        color: $light-yellow-green;
+        /* border-radius: 50%; */
+        color: $link-color;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -14,12 +16,28 @@
         margin-top: -25px;
         left: 50%;
         margin-left: -25px;
-        transition: border 0.5s;
+        text-decoration: none;
+        /* transition: all 0.5s ease-out; */
+
+        /* &:after { */
+        /*     content:''; */
+        /*     height: 1px; */
+        /*     width: 0; */
+        /*     background-color: $link-color; */
+        /*     transition: all 0.5s ease-out; */
+        /* } */
     }
 
     .menu-item:hover {
+        /* &:after { */
+        /*     width: 50px; */
+        /*     [> transform: scaleX(50); <] */
+        /*     [> transform:  <] */
+        /*     [> width: 100%; <] */
+        /* } */
         /* opacity: 0.5; */
-        transform: scale(1.2);
+        /* transform: scale(1.01); */
         /* border-bottom: 1px solid $light-yellow-green; */
     }
+
 }

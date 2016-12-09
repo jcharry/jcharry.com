@@ -16,13 +16,12 @@ export class FanMenu extends React.Component {
         this.getStyles = this.getStyles.bind(this);
         this.willEnter = this.willEnter.bind(this);
         this.willLeave = this.willLeave.bind(this);
-
     }
 
     getDefaultStyles() {
         return this.menuItems.map((item) => {
             return {
-                key: item,
+                key: item.title,
                 data: item,
                 style: {
                     left: 100,
@@ -38,7 +37,7 @@ export class FanMenu extends React.Component {
 
         return this.menuItems.map((item) => {
             var retVal = {
-                key: item,
+                key: item.title,
                 data: item,
                 style: {
                     left: spring((window.innerWidth / 2) - (r*Math.cos(theta))),
@@ -66,17 +65,27 @@ export class FanMenu extends React.Component {
 
     render() {
         var { fanDisplayOpen } = this.props;
-        this.menuItems = fanDisplayOpen ? ['Projects', 'Me', 'Blog'] : [];
+        this.menuItems = fanDisplayOpen ? [
+            {title: 'work', url: '/work'},
+            {title: 'about', url: '/about'},
+            {title: 'contact', url: '/contact'}
+        ] : [];
         return (
             <div className='fan-menu'>
-                <TransitionMotion 
+                <TransitionMotion
                     styles={this.getStyles()}
                     willEnter={this.willEnter}
                     willLeave={this.willLeave}>
-                    {styles => 
+                    {styles =>
                         <div>
                             {styles.map(({key, style, data}) => {
-                                return <MenuItem key={key} style={style} open={fanDisplayOpen} title={data} />;
+                            return <MenuItem
+                                key={key}
+                                style={style}
+                                open={fanDisplayOpen}
+                                title={data.title}
+                                url={data.url}
+                                external={data.external}/>;
                             })}
                         </div>
                     }

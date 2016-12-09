@@ -1,0 +1,42 @@
+.back-button {
+    cursor: pointer;
+    $size: 30px;
+    height: $size;
+    width: $size;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    margin: 0;
+    box-sizing: border-box;
+    line-height: $size;
+    display: inline-block;
+    z-index: 100;
+
+    &:after, &:before{
+        $width: $size;
+        $height: 2px;
+        transform: rotate(-45deg);
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-top: -$height/2;
+        margin-left: -$width/2;
+        display: block;
+        height: $height;
+        width: $width;
+        background-color: $link-color;
+        transition: all 0.25s ease-out;
+    }
+
+    &:after {
+        /* transform: rotate(-135deg); */
+        transform: rotate(45deg);
+    }
+
+    &:hover {
+        &:before, &:after {
+            transform: rotate(0deg);
+        }
+    }
+}

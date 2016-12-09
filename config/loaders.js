@@ -34,8 +34,7 @@ module.exports = {
             loader: 'dsv-loader'
         },
         {
-
-            test: /\.(png|jpg)$/, 
+            test: /\.(png|jpg|pdf|gif)$/,
             loader: 'url-loader?limit=8192'
         }
     ],

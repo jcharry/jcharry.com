@@ -2,7 +2,7 @@
  *
  *  Personal Tween.js
  *      Utilize Robert Penner's Easing Functions
- *      
+ *
  *      Simply interpolates numbers and returns them
  *      Takes named parameters, and returns those parameters
  *      with tweened values at each call of update()
@@ -30,16 +30,15 @@
  *      your animation loop loop through each tween and update
  *      i.e. tweens.forEach((tween) => tween.update());
  *
- *      When a tween is done, it will remove itself from the 
+ *      When a tween is done, it will remove itself from the
  *      parent array by calling invalidate() on itself
  *      that way when a tween is done it disappears for good
  *
  ********************************/
 export default class Tween {
-    // Set some initial values in case 
+    // Set some initial values in case
     // some intialization parameters are not set
     constructor(parent) {
-        
         // Default values
         this.dur = 1000;
         this.easeFn = this.noEasing;
@@ -53,8 +52,8 @@ export default class Tween {
         // is called.  Important that this starts as null or undefined
         this.startTime;
 
-        // Parent gives access to the array that will house all 
-        // tweens.  Pattern makes it easier to delete tweens from 
+        // Parent gives access to the array that will house all
+        // tweens.  Pattern makes it easier to delete tweens from
         // animation loop
         this.parent = parent;
 
@@ -93,13 +92,13 @@ export default class Tween {
     // -------- Easing Functions --------------//
     // ----------------------------------------//
     // Robert Penner's Easing Functions
-    
+
     // PARAMS
     // t = current time (time - start time)
     // b = starting value
     // c = ending value
     // d = duration of tween
-    
+
     easeOutBouce(t, b, c, d) {
         if ((t/=d) < (1/2.75)) {
             return c*(7.5625*t*t) + b;
@@ -111,7 +110,7 @@ export default class Tween {
             return c*(7.5625*(t-=(2.625/2.75))*t + .984375) + b;
         }
     }
-    
+
     easeInOutQuad(t, b, c, d) {
         t /= d/2;
         if (t < 1) return c/2*t*t + b;
@@ -132,7 +131,6 @@ export default class Tween {
     // ----------------------------------------//
     // -------- END Easing Functions ----------//
     // ----------------------------------------//
-    
 
     // Set the duration of the tween
     // Defaults to 1 second
@@ -169,13 +167,12 @@ export default class Tween {
     // Update should be called inside a requestAnimationFrame
     update(time) {
 
-        // On the first call of update, 
+        // On the first call of update,
         // capture the current time passed by requestAnimationFrame
         // and save it as the startTime for this tween
         if (!this.startTime) {
             this.startTime = time;
         }
-        
         // Check the time to determine if tween should finish
         if (time - this.startTime < this.dur) {
 
@@ -183,9 +180,9 @@ export default class Tween {
             // update the value based on the easing function
             // Easing is set to noEasing as a default
             this.propsToAnimate.forEach((prop) => {
-                this[prop] = this.easeFn(time - this.startTime, this['start'+prop], this['end'+prop], this.dur);
+                this[prop] = this.easeFn(time - this.startTime, this[`start${prop}`], this[`end${prop}`], this.dur);
             });
-        } 
+        }
         // If the elapsed time is greater than the duration
         // of the tween, invalidate it
         else {

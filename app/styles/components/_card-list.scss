@@ -7,7 +7,7 @@
     flex-direction: row;
 
     > p {
-        color: $light-yellow-green;
+        color: $text-color;
         position: absolute;
         top: 65px;
         width: 100vw;
@@ -29,7 +29,11 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        background-color: rgba(0,0,0,0.3);
+        background-color: rgba(0,0,0,0.7);
+    }
+
+    .card-text {
+        color: $light-text-color;
     }
 
     > div:active {
@@ -37,7 +41,7 @@
     }
 
     .card-contents:first-child {
-        color: $yellow-green-header;
+        color: $light-text-color;
     }
 
     .card-contents > h2 {
@@ -50,7 +54,7 @@
     }
 
     .list-contents > div {
-        padding: 1rem 1rem 1rem 1rem;
+        padding: 0.2rem 1rem;
 
         h3 {
             font-size: 1.2rem;
@@ -71,7 +75,7 @@
 
             h3 {
                 font-size: 1rem;
-                margin-bottom: 0.5rem;
+                margin-bottom: 0.1rem;
             }
             p {
                 font-size: 0.8rem;
@@ -81,7 +85,7 @@
 
 
     > div * {
-        /*color: $light-yellow-green;*/
+        /* color: $light-yellow-green; */
         pointer-events: none;
         user-select: none;
         margin: 0;

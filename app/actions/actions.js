@@ -43,3 +43,17 @@ export const currentPage = (pageName) => {
         pageName
     };
 };
+
+export const initializeProjects = (projects) => {
+    return {
+        type: 'INITIALIZE_PROJECTS',
+        projects
+    };
+};
+
+export const setProjectListFilter = (category) => {
+    return {
+        type: 'SET_PROJECT_LIST_FILTER',
+        category
+    };
+};

@@ -1,40 +1,38 @@
 import React from 'react';
 import * as redux from 'redux';
 import { connect } from 'react-redux';
+import { Link } from 'react-router';
+import ExternalLink from 'app/components/ExternalLink';
 
 import * as actions from 'app/actions/actions';
 
 export class MenuItem extends React.Component {
-    constructor(props) {
-        super(props);
-
-        this.handleClick = this.handleClick.bind(this);
-    }
-
-    handleClick(e) {
-        var { dispatch, title } = this.props;
-
-        e.stopPropagation();
-        if (title === 'Blog') {
-            window.open('http://blog.jcharry.com', '_blank');
-            return;
-        }
-        dispatch(actions.currentPage(title));
-    }
-
     render() {
-        var { title, style, open } = this.props;
+        var { title, style, open, url, external } = this.props;
         var s = {
             ...style,
-            zIndex: open ? 10 : 0
+            zIndex: open ? 10 : -10
         };
-        return (
-            <div style={s} onTouchStart={this.handleClick} onClick={this.handleClick} className='menu-item'>
+
+        const renderTag = () => {
+            if (external) {
+                return <ExternalLink
+                    url={url}
+                    style={s}
+                    cls='menu-item'>
+                    {title}
+                </ExternalLink>;
+            }
+            return <Link
+                style={s}
+                to={url}
+                className='menu-item'>
                 {title}
-            </div>
-        );
+            </Link>;
+        };
+
+        return renderTag();
     }
 }
 
 export default connect()(MenuItem);
- 

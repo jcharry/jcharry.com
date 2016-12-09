@@ -1,6 +1,9 @@
 @import 'base/variables';
 @import url(https://fonts.googleapis.com/css?family=Roboto);
 
+@import 'foundation';
+@include foundation-everything;
+
 @import 'components/project';
 @import 'components/project-list';
 @import 'components/canvas';
@@ -8,6 +11,10 @@
 @import 'components/fan-menu';
 @import 'components/social-media';
 @import 'components/card-list';
+@import 'components/home';
+@import 'components/back-button';
+@import 'components/project-page';
+@import 'components/filter';
 
 html, body {
     // overflow: hidden;
@@ -15,95 +22,47 @@ html, body {
     max-height: 100vh;
     margin: 0;
     cursor: default;
+    background-color: $page-background-color;
 }
 body {
     font-family: Roboto;
     background: $page-background-color;
     padding: 0;
     margin: 0;
+    /* -webkit-transform: translate3d(0, 0, 0); */
 }
+* { -webkit-tap-highlight-color:rgba(0,0,0,0); }
 
 .app {
-    height: 100vh;
     // overflow: hidden;
     margin: 0;
+    padding: 0;
 }
 
 .main {
-    height: 100vh;
+    width: 100vw;
     // overflow: hidden;
     margin: 0;
+    padding: 0;
 }
 
 p {
     color: lightgray;
 }
 
-.home-text {
-    width: 100vw;
-    display: flex;
-    flex-direction: column;
-    padding-top: 70vh;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    opacity: 0;
-    position: fixed;
-    top: 0;
-    pointer-events: none;
-
-    transition: all 1s;
-
-    p {
-        color: $light-yellow-green;
-        padding: 0 5rem 0 5rem;
-        width: 250px;
-        margin: 0;
-        font-size: 1.2rem;
+a {
+    color: $link-color;
+    &:after {
+        content:'';
+        height: 1px;
+        width: 0;
+        background-color: $link-color;
+        transition: all 0.5s ease-out;
     }
 
-    .click-me {
-        position: absolute;
-        font-size: 8pt;
-        top: 72%;
-        left: 54%;
-        padding: 0;
-        margin: 0;
-        width: 100px;
-        opacity: 0;
-        transition: opacity 0.5s;
+    &:hover {
+        &:after {
+            width: 100%;
+        }
     }
-
-    :last-child {
-        margin-top: 20px;
-        font-size: 1rem;
-    }
-}
-
-.back-button {
-    color: $light-yellow-green;
-    cursor: pointer;
-    background-color: transparent;
-    border: none;
-    font-size: 16pt;
-    position: fixed;
-    top: 5px;
-    left: 10px;
-    padding: 0;
-    margin: 0;
-    width: 44px;
-    height: 44px;
-    line-height: 44px;
-    text-align: center;
-    z-index: 100;
-    transition: transform 0.5s;
-    transform-origin: center;
-}
-
-.back-button:hover {
-    transform: rotate(0.25turn);
-}
-
-a:hover {
-    transform: scale(1.04);
 }

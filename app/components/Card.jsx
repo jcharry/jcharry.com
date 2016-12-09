@@ -90,10 +90,10 @@ export class Card extends React.Component {
     render() {
         var { contents, dir } = this.props;
         return (
-            <Motion 
+            <Motion
                 defaultStyle={{left: dir === 'forward' ? window.innerWidth : -window.innerWidth}}
                 style={{ left: spring(0) }}>
-                {interpolatingStyle => 
+                {interpolatingStyle =>
                     <div className='card' style={interpolatingStyle} ref={(c) => { this._elt = c;}} onTouchStart={this.handleMouseDown} onTouchMove={this.handleMouseMove} onTouchEnd={this.handleMouseUp} onMouseUp={this.handleMouseUp} onMouseMove={this.handleMouseMove} onMouseDown={this.handleMouseDown}>
                         <div className='card-contents'>
                             <h2>{contents.title}</h2>

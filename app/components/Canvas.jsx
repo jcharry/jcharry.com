@@ -15,14 +15,14 @@ export class Canvas extends React.Component {
 
         this.animate = this.animate.bind(this);
         this.handleWindowResize = this.handleWindowResize.bind(this);
-
         this.tweens = [];
+        this.move = this.move.bind(this);
     }
 
     // Pixi.js animation loop
     animate(time) {
         var that = this;
-        this.system.update();
+        // this.system.update();
         this.tweens.forEach((tween) => {
             tween.update(time);
             tween.propsToAnimate.forEach((prop) => {
@@ -94,9 +94,11 @@ export class Canvas extends React.Component {
     componentDidMount() {
         var { dispatch } = this.props;
 
-        var h = window.innerHeight + 300;
-        var w = window.innerWidth + 300;
+        var h = window.innerHeight;
+        var w = window.innerWidth;
         this.renderer = PIXI.autoDetectRenderer(w, h, {transparent: true, antialias: true});
+        // this.renderer.backgroundColor = 0xdddddd;
+        this.renderer.backgroundColor = 0xeeeeee;
         this._elt.appendChild(this.renderer.view);
 
         // create the root of the scene graph
@@ -110,28 +112,28 @@ export class Canvas extends React.Component {
         //this.stage.on('mousedown', this.handleMouseDown);
         //this.stage.addChild(this.graphics);
 
-        this.bg = new PIXI.Sprite.fromImage(require('../images/winter-sunset.png'));
-        this.bg.width = w;
-        this.bg.height = h;
-        this.bg.alpha = 0.5;
-        this.bg.x = window.innerWidth / 2;
-        this.bg.y = window.innerHeight / 2;
-        this.bg.anchor.x = 0.5;
-        this.bg.anchor.y = 0.5;
+        // this.bg = new PIXI.Sprite.fromImage(`/${require('../images/winter-sunset.png')}`);
+        // this.bg.width = w;
+        // this.bg.height = h;
+        // this.bg.alpha = 0.5;
+        // this.bg.x = window.innerWidth / 2;
+        // this.bg.y = window.innerHeight / 2;
+        // this.bg.anchor.x = 0.5;
+        // this.bg.anchor.y = 0.5;
         // this.stage.addChild(this.bg);
         //this.me.sprite.zOrder = 100;
         window.addEventListener('resize', this.handleWindowResize);
 
-        this.system = particleSystem(this.stage);
-        var numParticles = 50;
-        var particleDist = (window.innerWidth - 10) / numParticles;
-        for (var i = 0; i < numParticles; i++) {
-            this.system.addParticle(i * particleDist, Math.random() * 100 + 30, Math.random() * 10 + 8);
-        }
-        this.stage.addChild(this.system.graphics);
-        window.particleSystem = this.system;
+        // this.system = particleSystem(this.stage);
+        // var numParticles = 50;
+        // var particleDist = (window.innerWidth - 10) / numParticles;
+        // for (var i = 0; i < numParticles; i++) {
+            // this.system.addParticle(i * particleDist, Math.random() * 100 + 30, Math.random() * 10 + 8);
+        // }
+        // this.stage.addChild(this.system.graphics);
+        // window.particleSystem = this.system;
         this.me = new MyFace(this.stage, this.tweens, dispatch);
-        this.system.addCollider(this.me.sprite);
+        // this.system.addCollider(this.me.sprite);
 
         this.drawBackground();
 
@@ -149,43 +151,52 @@ export class Canvas extends React.Component {
 
         var that = this;
         requestAnimationFrame(this.animate);
-        setTimeout(function() {
-            that.me.enter();
-        }, 3000);
+        this.move();
+    }
+
+    move() {
+        const { currentPage } = this.props;
+        switch(currentPage) {
+            case 'work':
+                this.me.projectsPage();
+                break;
+            case 'about':
+                this.me.mePage();
+                break;
+            case 'contact':
+                console.log('contact page');
+                this.me.contactPage();
+                break;
+            case 'home':
+                this.me.homePage();
+                break;
+            default:
+                break;
+        }
     }
 
     componentDidUpdate(prevProps) {
+        console.log('canvas updated');
         var { currentPage } = this.props;
         this.me.currentPage = currentPage;
 
         if (prevProps.currentPage !== currentPage) {
-            switch(currentPage) {
-                case 'Projects':
-                    this.me.projectsPage();
-                    break;
-                case 'Me':
-                    this.me.mePage();
-                    break;
-                case 'Contact':
-                    break;
-                case 'home':
-                    this.me.homePage();
-                    break;
-                default:
-                    break;
-            }
+            this.move();
         }
     }
 
-    handleMouseDown(e) {
-        e.stopPropagation();
-    }
+    // handleMouseDown(e) {
+    //     e.stopPropagation();
+    // }
 
     handleWindowResize(e) {
+        let { currentPage } = this.props;
+        if (currentPage === 'home') {
+            this.me.homePage();
+        }
         this.renderer.view.width = window.innerWidth;
         this.renderer.view.height = window.innerHeight;
         this.renderer.resize(window.innerWidth, window.innerHeight);
-        this.me.homePage();
     }
 
     render() {

@@ -12,19 +12,26 @@ process.env.PWD = process.cwd();
 
 module.exports = {
     devtool: process.env.NODE_ENV === 'production' ? null : 'cheap-eval-source-map',
-    entry: process.env.NODE_ENV === 'production' ? 
-        './app/app.jsx' : [
-        'webpack-dev-server/client?http://localhost:8080',
-        'webpack/hot/dev-server',
-        './app/app.jsx'
-    ],
+    entry: process.env.NODE_ENV === 'production' ?
+        [
+            'script!jquery/dist/jquery.min.js',
+            'script!foundation-sites/dist/foundation.min.js',
+            './app/app.jsx'
+        ] :
+        [
+            'webpack-dev-server/client?http://localhost:8080',
+            'webpack/hot/dev-server',
+            'script!jquery/dist/jquery.min.js',
+            'script!foundation-sites/dist/foundation.min.js',
+            './app/app.jsx'
+        ],
     node: {
         fs: 'empty'
     },
-    output: { 
-        path: path.join(process.env.PWD, 'dist'),
-        filename: 'bundle.js',
-        //publicPath: 'dist/'
+    output: {
+        path: path.resolve(process.env.PWD, 'dist'),
+        filename: '/bundle.js'
+        // publicPath: '/dist'
     },
     resolve: {
         root: __dirname,
@@ -35,12 +42,18 @@ module.exports = {
         extensions: ['', '.js', '.jsx']
     },
     module: loaders,
+    sassLoader: {
+        includePaths: [
+            path.resolve(process.env.PWD, './node_modules/foundation-sites/scss')
+        ]
+    },
     postcss: function() {
         return [require('autoprefixer'), require('precss')];
     },
     plugins: plugins,
     devServer: process.env.NODE_ENV === 'production' ? null : {
         contentBase: './dist',
-        hot: true
+        hot: true,
+        historyApiFallback: true
     }
 };

@@ -8,97 +8,36 @@ import $ from 'jquery';
 
 import * as actions from 'app/actions/actions';
 
-import projects from 'app/db/projects';
-import ProjectList from 'app/components/ProjectList';
 import Canvas from 'app/components/Canvas';
-import FanMenu from 'app/components/FanMenu';
-import Me from 'app/components/Me';
 
 export class Main extends React.Component {
     constructor(props) {
         super(props);
-
-        this.handleCloseButton = this.handleCloseButton.bind(this);
-        //this.handleMouseWheel = this.handleMouseWheel.bind(this);
+        this.state = {
+            loaded: false
+        };
     }
 
-    // mouseWheelHandler(event, delta) {
-    //     this.scrollLeft -= (delta);
-    //     event.preventDefault();
-    // }
-    //
-    // scrollHorizontally(e) {
-    //     e = window.event || e;
-    //     var delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)));
-    //     document.documentElement.scrollLeft -= (delta*40); // Multiplied by 40
-    //     document.body.scrollLeft -= (delta*40); // Multiplied by 40
-    //     e.preventDefault();
-    // }
+    componentDidMount() {
+        setTimeout(() => {
+            this.setState({
+                loaded: true
+            });
+        }, 1000);
+    }
 
-    componentDidUpdate() {
+    componentDidUpdate(prevProps, prevState) {
         var { fanDisplayOpen, currentPage } = this.props;
         console.log('fan should open');
-
-        // If we're looking at projects, set mousewheel to scroll
-        // horizontally
-        // if (currentPage === 'Projects') {
-        //     if (window.addEventListener) {
-        //         // IE9, Chrome, Safari, Opera
-        //         window.addEventListener("mousewheel", this.scrollHorizontally, false);
-        //         // Firefox
-        //         window.addEventListener("DOMMouseScroll", this.scrollHorizontally, false);
-        //     } else {
-        //         // IE 6/7/8
-        //         window.attachEvent("onmousewheel", this.scrollHorizontally);
-        //     }
-        //     //$('html, body').mousewheel(this.mouseWheelHandler);
-        //     //$('html, body').on('mousewheel', this.mouseWheelHandler);
-        //     //console.log($('html, body').mousewheel);
-        // } else {
-        //     if (window.removeEventListener) {
-        //         // IE9, Chrome, Safari, Opera
-        //         window.removeEventListener("mousewheel", this.scrollHorizontally, false);
-        //         // Firefox
-        //         window.removeEventListener("DOMMouseScroll", this.scrollHorizontally, false);
-        //     } else {
-        //         // IE 6/7/8
-        //         window.detachEvent("onmousewheel", this.scrollHorizontally);
-        //     }
-        //     //$('html, body').off('mousewheel', this.mouseWheelHandler);
-        //     console.log(window.mousewheel);
-        //     //console.log($('html, body').mousewheel);
-        // }
-        //
-        // // Disable All touch events
-        // $('html, body').on('touchstart touchmove', (e) => {
-        //     e.preventDefault();
-        // });
-    }
-
-    handleCloseButton(e) {
-        const { dispatch, selectedProject, currentPage } = this.props;
-        if (selectedProject.id !== '') {
-            dispatch(actions.clearSelectedProject());
-        } else if (selectedProject.id === '' && currentPage !== 'home') {
-            console.log('should go home');
-            dispatch(actions.currentPage('home'));
-        }
     }
 
     render() {
-        var { dispatch, fanDisplayOpen, currentPage } = this.props;
+        var { fanDisplayOpen, currentPage } = this.props;
+        const { loaded } = this.state;
         return (
             <div className='main'>
-                <FanMenu />
-                <Canvas />
-                {currentPage !== 'home' && <button className='back-button' onTouchStart={this.handleCloseButton} onClick={this.handleCloseButton}>x</button>}
-                <div style={{opacity: currentPage === 'home' ? 1 : 0}} className='home-text'>
-                    <p>Hi, I'm Jamie</p>
-                    <p>Full Stack Web Developer & Creative Coder, Currently purusing MPS at NYU ITP</p>
-                    <img src={require('../images/clickme.png')} className='click-me' />
-                </div>
-                {currentPage === 'Projects' && <ProjectList projects={projects}/>}
-                {currentPage === 'Me' && <Me />}
+                {loaded && <Canvas />}
+                {this.props.children}
             </div>
         );
     }
