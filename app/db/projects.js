@@ -1,8 +1,17 @@
 export default {
+    pds: {
+        title: 'Digital Prints',
+        category: 'design',
+        blurb: 'A series of generative prints',
+        imgsrc: 'projects/pds/pds_thumb.png',
+        date: 'ITP | FALL 2016',
+        id: 'pds',
+        projectLink: 'https://github.com/jcharry/programming-design-systems-projects',
+    },
     "sasscan": {
         "title": "Sasscan",
         "category": "physical",
-        "imgsrc": "sasscan_thumb.png",
+        "imgsrc": "projects/sasscan/sasscan_thumb.png",
         "blurb": "A trashcan that yells",
         "date": "ITP | SPRING 2016",
         "id": "sasscan",
@@ -12,7 +21,7 @@ export default {
     "brasslamp": {
         "title": "Brass + Walnut Lamp",
         "category": "physical",
-        "imgsrc": "lamp_thumb.png",
+        "imgsrc": "projects/brasslamp/lamp_thumb.png",
         "blurb": "Lathe + 4-axis milled lamp",
         "date": "ITP | SPRING 2016",
         "id": "brasslamp",
@@ -22,7 +31,7 @@ export default {
     "tale": {
         "title":"Tale of <user_defined_location>",
         "category": "web",
-        "imgsrc": "tale_thumb.png",
+        "imgsrc": "projects/tale/tale_thumb.png",
         "blurb": "Algorithmic place-poem generator",
         "date": "ITP | MAY 2016",
         "id": "tale",
@@ -33,7 +42,7 @@ export default {
     "ingredients": {
         "title":"What's in my food?",
         "category": "apps",
-        "imgsrc": "foodapp_thumb.png",
+        "imgsrc": "projects/ingredients/foodapp_thumb.png",
         "blurb": "iOS App - Ingredient Decoder",
         "technologies": "Javascript, Phonegap/Cordova, OCR via Google Cloud Vision",
         "desc": "Ever wonder what maltodextrin is and why its in your food? By simply taking a photo of an ingredients label, the user can explore what all those tricky ingredients are, where they come from, and why they're there in the first place.",
@@ -47,7 +56,7 @@ export default {
     "cocoa": {
         "title":"An Interactive History of the Cocoa Bean",
         "category": "web",
-        "imgsrc": "cocoa_thumb.png",
+        "imgsrc": "projects/cocoa/cocoa_thumb.png",
         "blurb": "Web based slideshow",
         "desc": "A slideshow style web page developed from scratch to educate folks about the humble cocoa bean. I wanted to try to implement simple transitions without leaning on libraries like jQuery for help.",
         "technologies": "Vanilla Javascript, HTML, CSS",
@@ -61,7 +70,7 @@ export default {
     "eafus": {
         "title":"EAFUS Twitter Bot",
         "category": "experiments",
-        "imgsrc": "eafus_thumb.png",
+        "imgsrc": "projects/eafus/eafus_thumb.png",
         "technologies": "Node, Javascript, Twitter API, text processing with Python",
         "desc": "There are almost 4000 ingredients added to processed food. The FDA keeps a list of all these additives called EAFUS (Everything Added to Food in the United States). This bot tweets that list. Should take about 6 months to get through.",
         "date": "ITP | FEB 2016",
@@ -74,7 +83,7 @@ export default {
     "plasmicreflections": {
         "title":"Plasmic Reflection",
         "category": "physical",
-        "imgsrc": "plasmic_reflections_thumb.png",
+        "imgsrc": "projects/plasmicreflections/plasmic_reflections_thumb.png",
         "technologies": "Arduino, LED's, Heartbeat Sensor",
         "blurb": "Your heartbeat, reflected. Editor's Choice Makerfaire NYC 2016!",
         "desc": "A unique and personal experience, the Plasmic Reflection mirror encourages the user to fully inhabit their body and mind.  Developed over the course of several weeks at NYU ITP, the mirror acts as an extension of the user's heartbeat, allowing them to enter a meditative place where they are invited to look inward, or find silence.  Ultimately, the experience is up to the viewer.",
@@ -88,7 +97,7 @@ export default {
     "quppled": {
         "title": "Quppled",
         "category": "apps",
-        "imgsrc":"quppled_thumb.png",
+        "imgsrc":"projects/quppled/quppled_thumb.png",
         "blurb": "iOS app - Double Dating",
         "technologies": "Swift",
         "desc": "Very much in progress (but back burnered) Swift iOS app for meeting new couple friends.  Some might call it double dating.",
@@ -101,7 +110,7 @@ export default {
     "qad": {
         "title": "Question a Day",
         "category": "web",
-        "imgsrc": "qad_thumb.png",
+        "imgsrc": "projects/qad/qad_thumb.png",
         "blurb": "Public Journal of Feelings",
         "desc": "In today's facebook flooded internet world, we're often inundated with other people's feelings. Ultimately people are looking to connect with one. Question a Day is a simple attempt to allow for the sharing of deep feelings, semi-anonymously, to encourage us to look beyond our own feelings and to connect with those of a stranger.",
         "technologies": "Javascript, Node, MongoDB, Sentiment analysis, p5.js",
@@ -116,7 +125,7 @@ export default {
     "solarsynth": {
         "title":"Solar Synthesizer",
         "category": "experiments",
-        "imgsrc": "solarsynthsquare_thumb.png",
+        "imgsrc": "projects/solarsynth/solarsynthsquare_thumb.png",
         "blurb": "Solar music",
         "techologies": "p5.js",
         "desc": "Clicking around draws lines. When planets cross those lines, they make music. Sound fun? Done entirely in p5.js",
@@ -130,7 +139,7 @@ export default {
     "colorflowers": {
         "title":"HSB Drawings",
         "category": "experiments",
-        "imgsrc": "hsb_thumb.png",
+        "imgsrc": "projects/colorflowers/hsb_thumb.png",
         "blurb": "A few algorithmic drawings",
         "technologies": "p5.js",
         "desc": "With only a few simple translations, rotations, loops, and a bit of randomization, it's quite amazing how many possible drawings can be created with just a few minor tweaks",
@@ -145,7 +154,7 @@ export default {
         "category":"experiments",
         "blurb": "Playing with the Echonest API",
         "technologies": "p5.js, Echonest",
-        "imgsrc": "artistcomp_thumb.png",
+        "imgsrc": "projects/artistcomp/artistcomp_thumb.png",
         "thumbnail": "/images/artistcompsquare_thumb.png",
         "desc": "Music can be quite difficult to quanity, but the folks at Echonest are trying. This p5 sketch averages several musical characteristics for the top 100 songs of each selected artist, and displays them for comparison",
         "date": "ITP | NOV 2015",
@@ -157,7 +166,7 @@ export default {
     "particlesandwaves": {
         "title":"Particles and Waves",
         "category": "experiments",
-        "imgsrc": "particlesandwaves_thumb.png",
+        "imgsrc": "projects/paw/particlesandwaves_thumb.png",
         "blurb": "Canvas object interactions",
         "technologies": "p5.js",
         "desc": "A very early sketch to get a handle on object creation, interaction, and desctruction using p5 in the canvas.",

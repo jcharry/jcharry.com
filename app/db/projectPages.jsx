@@ -2,27 +2,54 @@ import React from 'react';
 import ExternalLink from 'app/components/ExternalLink';
 
 export default {
+    pds:
+        <div>
+            <h1>Digital Prints</h1>
+            <p className='project-date'>ITP | FALL 2016</p>
+            <h2>A Design for the word 'Tense'</h2>
+            <p>Lines are drawn between nodes based on distance to give a non-regular connection pattern. The spiral inward attempts to create tension for the viewer.</p>
+            <ExternalLink url='/images/projects/pds/pds0.png'><img src='/images/projects/pds/pds0.png' /></ExternalLink>
+            <br />
+            <br />
+            <br />
+            <h2>Generative Logo for the Tokyo 2020 Summer Games</h2>
+            <p>Typically olympic logos stand alone and are not reusable across events or media. This logo attempts to be useable for general purposes, as well as for individual events. Each generation creates a randomized set of brush strokes that leave abstract forms open for interpretation. They do not tie to specific events, but the abstract nature of the forms encourages the viewer to see the sport in the stroke.</p>
+            <p>The stroke was created through a simple, yet clever process. First a bezier path is drawn down the middle of the stroke.  Points along the path are sampled at regular intervals, and the stroke is extruded outward using normal vectors for direction.  The extrusion is finally scaled based on how far along the path it lies.</p>
+            <ExternalLink url='/images/projects/pds/pds2.png'><img src='/images/projects/pds/pds2.png' /></ExternalLink>
+            <br />
+            <br />
+            <br />
+            <h2>Sol Lewitt - Wall Drawing</h2>
+            <p>This recreation of a Sol Lewitt wall drawing uses Delaunay Triangulation to create an organic distribution of triangles.  A box packing algorithm is then used to pack several of these panels together to match the original.</p>
+            <ExternalLink url='/images/projects/pds/pds3.png'><img src='/images/projects/pds/pds3.png' /></ExternalLink>
+            <br />
+            <br />
+            <br />
+            <h2>Book cover for Dune</h2>
+            <p>I love dune, and the imagery in the novel is quite striking.  Strong colors and iconic imagery became the basis for this design.  The eye texture was generated through a 2D noise map, then masked with an eye-shaped path. Perlin Noise is used to generate the mountains in front.</p>
+            <ExternalLink url='/images/projects/pds/pds1.png'><img src='/images/projects/pds/pds1.png' /></ExternalLink>
+        </div>,
     brasslamp:
         <div>
             <h1>Brass, Walnut, and Cherry Lamp</h1>
             <p className='project-date'>ITP | SPRING 2016</p>
             <p>Made in equal parts on the wood lathe, a 4-axis mill, and at a desk with a tube cutter, this lamp was my first real dive into a fabrication product</p>
-            <ExternalLink url='/images/lamp0.jpg'><img src='/images/lamp0.jpg' /></ExternalLink>
+            <ExternalLink url='/images/projects/brasslamp/lamp0.jpg'><img src='/images/projects/brasslamp/lamp0.jpg' /></ExternalLink>
             <br />
             <br />
-            <ExternalLink url='/images/lamp1.jpg'><img src='/images/lamp1.jpg' /></ExternalLink>
+            <ExternalLink url='/images/projects/brasslamp/lamp1.jpg'><img src='/images/projects/brasslamp/lamp1.jpg' /></ExternalLink>
             <br />
             <br />
-            <ExternalLink url='/images/lamp2.jpg'><img src='/images/lamp2.jpg' /></ExternalLink>
+            <ExternalLink url='/images/projects/brasslamp/lamp2.jpg'><img src='/images/projects/brasslamp/lamp2.jpg' /></ExternalLink>
             <br />
             <br />
-            <ExternalLink url='/images/lamp3.jpg'><img src='/images/lamp3.png' /></ExternalLink>
+            <ExternalLink url='/images/projects/brasslamp/lamp3.jpg'><img src='/images/projects/brasslamp/lamp3.png' /></ExternalLink>
             <br />
             <br />
-            <ExternalLink url='/images/lamp4.jpg'><img src='/images/lamp4.png' /></ExternalLink>
+            <ExternalLink url='/images/projects/brasslamp/lamp4.jpg'><img src='/images/projects/brasslamp/lamp4.png' /></ExternalLink>
             <br />
             <br />
-            <ExternalLink url='/images/lamp5.jpg'><img src='/images/lamp5.png' /></ExternalLink>
+            <ExternalLink url='/images/projects/brasslamp/lamp5.jpg'><img src='/images/projects/brasslamp/lamp5.png' /></ExternalLink>
             <br />
             <br />
         </div>,
@@ -31,7 +58,7 @@ export default {
             <h1>Sasscan</h1>
             <p className='project-date'>ITP | SPRING 2016</p>
             <p>A project by Jamie Charry & Dana Abrassart</p>
-            <img src='/images/sasscan.gif'/>
+            <img src='/images/projects/sasscan/sasscan.gif'/>
             <p>How do you get people to think about their trash? How can you encourage them to be more diligent in handling their waste stream? Assault them at the source, of course. Sasscan attempts to bring awareness to waste by visually and auditorally berating the user after they've thrown something away.</p>
 
             <h2>See it in action</h2>
@@ -52,11 +79,11 @@ export default {
             <p>Leveraging a series of API's, this Flask application takes a geographical point as input and using it's coordinates collects information - including nearby places, weather, historic photos, and wikipedia entries - about that location.  The information is then run through a Tracery template to construct a summary of the place.</p>
             <h2>Screengrabs</h2>
             <p>The app is no longer online - api's change, servers cost money, but here's essentially how it worked</p>
-            <ExternalLink url='/images/tale0.png'><img src='/images/tale0.png' />
+            <ExternalLink url='/images/projects/tale/tale0.png'><img src='/images/projects/tale/tale0.png' />
 </ExternalLink>
-            <ExternalLink url='/images/tale1.png'><img src='/images/tale1.png' />
+            <ExternalLink url='/images/projects/tale/tale1.png'><img src='/images/projects/tale/tale1.png' />
 </ExternalLink>
-            <ExternalLink url='/images/chappaqua.png'><img src='/images/chappaqua.png' />
+            <ExternalLink url='/images/projects/tale/chappaqua.png'><img src='/images/projects/tale/chappaqua.png' />
 </ExternalLink>
             <br/>
             <br/>
@@ -104,10 +131,10 @@ export default {
             <h1>An Interactive History of the Cocoa Bean</h1>
             <p className='project-date'>ITP | FEB 2016</p>
             <p>A slideshow style web page developed from scratch to educate folks about the humble cocoa bean. I wanted to try to implement simple transitions without leaning on libraries like jQuery for help.</p>
-            <ExternalLink url='/images/cocoa0.png'><img src='/images/cocoa0.png' alt='a brief history of the cocoa bean'/></ExternalLink>
-            <ExternalLink url='/images/cocoa1.png'><img src='/images/cocoa1.png' alt='a map of central america'/></ExternalLink>
-            <ExternalLink url='/images/cocoa2.png'><img src='/images/cocoa2.png' alt='the conquistadors arrived'/></ExternalLink>
-            <ExternalLink url='/images/cocoa3.png'><img src='/images/cocoa3.png' alt='a cocoa famer'/></ExternalLink>
+            <ExternalLink url='/images/projects/cocoa/cocoa0.png'><img src='/images/projects/cocoa/cocoa0.png' alt='a brief history of the cocoa bean'/></ExternalLink>
+            <ExternalLink url='/images/projects/cocoa/cocoa1.png'><img src='/images/projects/cocoa/cocoa1.png' alt='a map of central america'/></ExternalLink>
+            <ExternalLink url='/images/projects/cocoa/cocoa2.png'><img src='/images/projects/cocoa/cocoa2.png' alt='the conquistadors arrived'/></ExternalLink>
+            <ExternalLink url='/images/projects/cocoa/cocoa3.png'><img src='/images/projects/cocoa/cocoa3.png' alt='a cocoa famer'/></ExternalLink>
             <br />
             <br />
             <h2>Technology</h2>
@@ -159,9 +186,9 @@ export default {
             <h1>Question a Day</h1>
             <p className='project-date'>ITP | DEC 2015</p>
             <p>In today's facebook flooded internet world, we're often inundated with other people's feelings. Ultimately people are looking to connect with one. Question a Day is a simple attempt to allow for the sharing of deep feelings, semi-anonymously, to encourage us to look beyond our own feelings and to connect with those of a stranger.</p>
-            <ExternalLink url='/images/qad0.png'><img src='/images/qad0.png' /></ExternalLink>
-            <ExternalLink url='/images/qad1.png'><img src='/images/qad1.png' /></ExternalLink>
-            <ExternalLink url='/images/qad2.png'><img src='/images/qad2.png' /></ExternalLink>
+            <ExternalLink url='/images/projects/qad/qad0.png'><img src='/images/projects/qad/qad0.png' /></ExternalLink>
+            <ExternalLink url='/images/projects/qad/qad1.png'><img src='/images/projects/qad/qad1.png' /></ExternalLink>
+            <ExternalLink url='/images/projects/qad/qad2.png'><img src='/images/projects/qad/qad2.png' /></ExternalLink>
             <br />
             <br />
             <h2>Technologies</h2>
@@ -186,25 +213,25 @@ export default {
         <div>
             <h1>HSB Drawings</h1>
             <p>Just some experiments with HSB color space, and the canvas</p>
-            <ExternalLink url='/images/colorflowers0.png'><img src='/images/colorflowers0.png' /></ExternalLink>
-            <ExternalLink url='/images/colorflowers1.png'><img src='/images/colorflowers1.png' /></ExternalLink>
-            <ExternalLink url='/images/colorflowers2.png'><img src='/images/colorflowers2.png' /></ExternalLink>
-            <ExternalLink url='/images/colorflowers3.png'><img src='/images/colorflowers3.png' /></ExternalLink>
-            <ExternalLink url='/images/colorflowers4.png'><img src='/images/colorflowers4.png' /></ExternalLink>
+            <ExternalLink url='/images/projects/colorflowers/colorflowers0.png'><img src='/images/projects/colorflowers/colorflowers0.png' /></ExternalLink>
+            <ExternalLink url='/images/projects/colorflowers/colorflowers1.png'><img src='/images/projects/colorflowers/colorflowers1.png' /></ExternalLink>
+            <ExternalLink url='/images/projects/colorflowers/colorflowers2.png'><img src='/images/projects/colorflowers/colorflowers2.png' /></ExternalLink>
+            <ExternalLink url='/images/projects/colorflowers/colorflowers3.png'><img src='/images/projects/colorflowers/colorflowers3.png' /></ExternalLink>
+            <ExternalLink url='/images/projects/colorflowers/colorflowers4.png'><img src='/images/projects/colorflowers/colorflowers4.png' /></ExternalLink>
         </div>,
     artistcomp:
         <div>
             <h1>Artist Comparator</h1>
             <p className='project-date'>ITP | NOV 2015</p>
             <p>Using the Echonest API - compare two different artists catalogs on a number of different characterstics</p>
-            <ExternalLink url='/images/artistcompsquare.png'><img src='/images/artistcompsquare.png' /></ExternalLink>
+            <ExternalLink url='/images/projects/artistcomp/artistcompsquare.png'><img src='/images/projects/artistcomp/artistcompsquare.png' /></ExternalLink>
         </div>,
     particlesandwaves:
         <div>
             <h1>Particles and Waves</h1>
             <p className='project-date'>ITP | OCT 2015</p>
             <p>A very early p5 sketch to get a hold on object collision</p>
-            <ExternalLink url='/images/paw.png'><img src='/images/paw.png' /></ExternalLink>
+            <ExternalLink url='/images/projects/paw/paw.png'><img src='/images/projects/paw/paw.png' /></ExternalLink>
             <br />
             <br />
             <h2>Links</h2>

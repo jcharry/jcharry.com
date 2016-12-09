@@ -45,8 +45,7 @@ export class About extends React.Component {
                     <div className='social-media-icons'>
                         {styles.map((style, i) => {
                             return <ExternalLink key={i} style={style} url={socialMedia[i].link}>
-
-                            <img className='social-media-icon' src={require('../images/'+socialMedia[i].imgsrc)} />
+                                <img className='social-media-icon' src={`/images/socialicons/${socialMedia[i].imgsrc}`} />
                             </ExternalLink>;
                         })}
                     </div>

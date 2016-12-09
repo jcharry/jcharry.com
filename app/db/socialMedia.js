@@ -13,5 +13,10 @@ export default [
         title: 'facebook',
         link: 'https://www.facebook.com/jamie.charry',
         imgsrc: 'facebook.png'
+    },
+    {
+        title: 'vimeo',
+        link: 'https://vimeo.com/jcharry',
+        imgsrc: 'vimeo.png'
     }
 ];
