@@ -274,6 +274,37 @@ export default class MyFace {
         this.tweens.push(scaleTween);
     }
 
+    blogPage() {
+        var x = this.sprite.x;
+        var y = this.sprite.y;
+        var finalX = -200;
+        var finalY = window.innerHeight / 2;
+        var startScale = this.sprite.scale.x;
+        var finalScale = 0.5;
+        var scaleDist = finalScale - startScale;
+        // Distance to move to the center of the page
+        //var xDist = finalX - x;
+        var xDist = finalX - x;
+        var yDist = finalY - y;
+        var mePageTween = new Tween(this.tweens)
+            .duration(1000)
+            .start({ x, y })
+            .end({ x: xDist, y: yDist})
+            .easing('easeInOutQuad')
+            .complete(() => {
+                console.log('tween done');
+            });
+
+        var scaleTween = new Tween(this.tweens)
+            .duration(1000)
+            .start({ scale: startScale })
+            .end({ scale: scaleDist })
+            .easing('easeInOutQuad');
+
+        this.tweens.push(mePageTween);
+        this.tweens.push(scaleTween);
+    }
+
     // Home page face position
     homePage() {
         // Where is the sprite right now?

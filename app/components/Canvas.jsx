@@ -164,12 +164,13 @@ export class Canvas extends React.Component {
                 this.me.mePage();
                 break;
             case 'contact':
-                console.log('contact page');
                 this.me.contactPage();
                 break;
             case 'home':
                 this.me.homePage();
                 break;
+            case 'blog':
+                this.me.blogPage();
             default:
                 break;
         }

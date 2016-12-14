@@ -8,6 +8,7 @@ import Work from 'app/components/Work';
 import Home from 'app/components/Home';
 import About from 'app/components/About';
 import Contact from 'app/components/Contact';
+import Blog from 'app/components/Blog';
 
 export default (
     <Router history={browserHistory}>
@@ -19,6 +20,7 @@ export default (
             </Route>
             <Route path='/about' component={About} />
             <Route path='/contact' component={Contact} />
+            <Route path='/blog' component={Blog} />
         </Route>
     </Router>
 );

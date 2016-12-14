@@ -57,14 +57,13 @@ export class ProjectList extends React.Component {
     willEnter() {
         return {
             marginTop: 100,
-            opacity: 1
+            opacity: 0
         };
     }
 
     willLeave() {
         return {
             marginTop: spring(-100),
-
             opacity: spring(0)
         };
     }

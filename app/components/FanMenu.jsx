@@ -32,7 +32,7 @@ export class FanMenu extends React.Component {
     }
     getStyles() {
         var { currentPage } = this.props;
-        var theta = Math.PI / 4;
+        var theta = 0; //Math.PI;
         var r = currentPage === 'home' ? 150 : 700;
 
         return this.menuItems.map((item) => {
@@ -68,7 +68,9 @@ export class FanMenu extends React.Component {
         this.menuItems = fanDisplayOpen ? [
             {title: 'work', url: '/work'},
             {title: 'about', url: '/about'},
-            {title: 'contact', url: '/contact'}
+            {title: 'contact', url: '/contact'},
+            {title: 'blog', url: '/blog'},
+            {title: 'itp', url: 'http://itp.jcharry.com', external: true}
         ] : [];
         return (
             <div className='fan-menu'>
