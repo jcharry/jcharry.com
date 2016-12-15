@@ -1,0 +1,35 @@
+.blog {
+
+    .blog-container {
+        position: relative;
+    }
+
+
+    // TODO: Combine with .project-page, since they're basically the same...
+    .blog-page {
+
+    }
+    .blog-post-list {
+        margin-top: 100px;
+        display: flex;
+        flex-direction: column;
+
+        .blog-list-item {
+            // height: 200px;
+            padding: 1rem;
+            margin: 1rem;
+            background-color: $shadow-color;
+            cursor: pointer;
+            display: flex;
+            flex-direction: row;
+
+            // Override global link hover behavior
+            &:hover {
+                &:after {
+                    width: 0;
+                }
+            }
+        }
+    }
+
+}

@@ -1,6 +1,7 @@
 @import 'base/variables';
 @import url(https://fonts.googleapis.com/css?family=Roboto);
 
+@import 'base/settings';
 @import 'foundation';
 @include foundation-everything;
 
@@ -16,6 +17,7 @@
 @import 'components/project-page';
 @import 'components/filter';
 @import 'components/work';
+@import 'components/blog';
 
 html, body {
     // overflow: hidden;

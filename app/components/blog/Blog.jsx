@@ -13,7 +13,6 @@ import { currentPage } from 'app/actions/actions';
 class Blog extends React.Component {
     constructor(props) {
         super(props);
-
     }
 
     componentDidMount() {
@@ -22,11 +21,17 @@ class Blog extends React.Component {
     }
 
     render() {
-        const { router } = this.props;
+        const { router, location } = this.props;
+        console.log(location.pathname);
+
+        let url = '/';
+        if (location.pathname !== '/blog') {
+            url = '/blog';
+        }
         return (
             <div className='blog'>
-                Coming Soon
-                <BackButton router={router} url='/' />
+                {this.props.children}
+                <BackButton router={router} url={url} />
             </div>
         );
     }

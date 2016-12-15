@@ -8,7 +8,9 @@ import Work from 'app/components/Work';
 import Home from 'app/components/Home';
 import About from 'app/components/About';
 import Contact from 'app/components/Contact';
-import Blog from 'app/components/Blog';
+import Blog from 'app/components/blog/Blog';
+import BlogPage from 'app/components/blog/BlogPage';
+import BlogListContainer from 'app/components/blog/BlogListContainer';
 
 export default (
     <Router history={browserHistory}>
@@ -20,7 +22,10 @@ export default (
             </Route>
             <Route path='/about' component={About} />
             <Route path='/contact' component={Contact} />
-            <Route path='/blog' component={Blog} />
+            <Route path='/blog' component={Blog}>
+                <IndexRoute component={BlogListContainer} />
+                <Route path='/blog/:post' component={BlogPage} />
+            </Route>
         </Route>
     </Router>
 );

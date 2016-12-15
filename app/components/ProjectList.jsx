@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { TransitionMotion, StaggeredMotion, spring, presets } from 'react-motion';
+import { TransitionMotion, spring, presets } from 'react-motion';
 
 import * as actions from 'app/actions/actions';
 import $ from 'jquery';

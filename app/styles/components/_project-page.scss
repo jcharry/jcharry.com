@@ -1,4 +1,5 @@
-.project-page {
+// TODO: Combine these into a single class - use mixins
+.project-page, .blog-page {
     position: relative;
     padding: 2rem;
     z-index: 100;
