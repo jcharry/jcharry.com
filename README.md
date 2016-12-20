@@ -4,6 +4,3 @@ Using
 - Redux
 - Webpack
 - React Motion
-
-update readme -testing GPG signing
-
