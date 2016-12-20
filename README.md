@@ -5,3 +5,5 @@ Using
 - Webpack
 - React Motion
 
+update readme -testing GPG signing
+
