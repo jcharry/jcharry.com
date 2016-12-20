@@ -74,7 +74,6 @@ export class ProjectList extends React.Component {
             <TransitionMotion
                 defaultStyles={this.getDefaultStyles()}
                 styles={this.getStyles()}
-                willLeave={this.willLeave}
                 willEnter={this.willEnter}>
                 {styles =>
                 <div className="project-list">

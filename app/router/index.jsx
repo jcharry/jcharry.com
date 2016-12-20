@@ -13,7 +13,7 @@ import BlogPage from 'app/components/blog/BlogPage';
 import BlogListContainer from 'app/components/blog/BlogListContainer';
 
 export default (
-    <Router history={browserHistory}>
+    <Router onUpdate={() => window.scrollTo(0, 0)} history={browserHistory}>
         <Route path='/' component={Main}>
             <IndexRoute component={Home} />
             <Route path='/work' component={Work}>

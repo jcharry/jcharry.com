@@ -26,11 +26,11 @@ export class Main extends React.Component {
         }, 1000);
     }
 
-    componentDidUpdate(prevProps, prevState) {
-        var { fanDisplayOpen, currentPage } = this.props;
-        console.log('fan should open');
-    }
-
+    // componentDidUpdate(prevProps, prevState) {
+    //     var { fanDisplayOpen, currentPage } = this.props;
+    //     console.log('fan should open');
+    // }
+    //
     render() {
         var { fanDisplayOpen, currentPage } = this.props;
         const { loaded } = this.state;
@@ -48,7 +48,7 @@ export default connect((state) => {
     return {
         fanDisplayOpen: state.fanDisplayOpen,
         currentPage: state.currentPage,
-        selectedProject: state.selectedProject
+        // selectedProject: state.selectedProject
     };
 })(Main);
 

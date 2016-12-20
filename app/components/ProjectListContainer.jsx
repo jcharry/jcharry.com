@@ -25,14 +25,15 @@ class ProjectListContainer extends React.Component {
         }).map(prj => {
             return projects[prj];
         });
+
         return filteredProjects;
     }
 
     render() {
-        const prjs = this.filterProjects();
+        // const prjs = this.filterProjects();
         return (
             <div className='project-page-container'>
-                <Filter></Filter>
+                <Filter />
                 <ProjectList projects={this.filterProjects()} />
             </div>
         );
