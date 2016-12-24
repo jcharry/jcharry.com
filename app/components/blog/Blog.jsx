@@ -22,7 +22,6 @@ class Blog extends React.Component {
 
     render() {
         const { router, location } = this.props;
-        console.log(location.pathname);
 
         let url = '/';
         if (location.pathname !== '/blog') {

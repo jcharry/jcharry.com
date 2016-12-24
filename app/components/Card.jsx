@@ -80,7 +80,6 @@ export class Card extends React.Component {
     }
 
     componentWillMount() {
-        console.log('before mounting');
     }
 
     componentDidMount() {

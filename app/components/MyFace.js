@@ -77,7 +77,6 @@ export default class MyFace {
 
     mouseDown(e) {
         e.stopPropagation();
-        console.log('clicked my face');
 
         switch (this.currentPage) {
             case 'home':
@@ -204,7 +203,6 @@ export default class MyFace {
             .end({ x: xDist, y: yDist })
             .easing('easeInOutQuad')
             .complete(() => {
-                console.log('tween done');
             });
 
         this.tweens.push(projectsPageTween);
@@ -230,7 +228,6 @@ export default class MyFace {
             .end({ x: xDist, y: yDist})
             .easing('easeInOutQuad')
             .complete(() => {
-                console.log('tween done');
             });
 
         var scaleTween = new Tween(this.tweens)
@@ -261,7 +258,6 @@ export default class MyFace {
             .end({ x: xDist, y: yDist})
             .easing('easeInOutQuad')
             .complete(() => {
-                console.log('tween done');
             });
 
         var scaleTween = new Tween(this.tweens)
@@ -292,7 +288,6 @@ export default class MyFace {
             .end({ x: xDist, y: yDist})
             .easing('easeInOutQuad')
             .complete(() => {
-                console.log('tween done');
             });
 
         var scaleTween = new Tween(this.tweens)
@@ -325,7 +320,6 @@ export default class MyFace {
             .end({ x: xDist, y: yDist })
             .easing('easeInOutQuad')
             .complete(() => {
-                console.log('tween done');
             });
 
         var scaleTween = new Tween(this.tweens)

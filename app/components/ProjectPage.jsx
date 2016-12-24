@@ -15,10 +15,6 @@ class ProjectPage extends React.Component {
 
     }
 
-    componentDidMount() {
-        console.log('project page mounted');
-    }
-
     render() {
         const projects = this.props.projects;
         let id = this.props.routeParams.projectId;

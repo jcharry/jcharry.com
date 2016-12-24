@@ -64,7 +64,6 @@ export class Canvas extends React.Component {
     //
     //     if (len > 1) {
     //         var randomHex = '0x'+Math.floor(Math.random()*16777215).toString(16);
-    //         console.log(randomHex);
     //         this.graphics.lineStyle(2, randomHex, 1);
     //         this.cantor(x, y, len / 3);
     //         this.cantor(x + len*2/3, y, len/3);
@@ -177,7 +176,6 @@ export class Canvas extends React.Component {
     }
 
     componentDidUpdate(prevProps) {
-        console.log('canvas updated');
         var { currentPage } = this.props;
         this.me.currentPage = currentPage;
 

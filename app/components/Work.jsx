@@ -23,10 +23,6 @@ class Work extends React.Component {
         dispatch(currentPage('work'));
     }
 
-    componentDidUpdate() {
-        console.log('work updated');
-    }
-
     render() {
         const { router, location } = this.props;
         let url = '/';

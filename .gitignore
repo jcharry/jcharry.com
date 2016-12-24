@@ -6,3 +6,4 @@ dist/*
 dist/*bundle.js
 dist/*.html
 config/*.env
+creds

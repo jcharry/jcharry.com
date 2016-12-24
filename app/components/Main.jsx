@@ -28,7 +28,6 @@ export class Main extends React.Component {
 
     // componentDidUpdate(prevProps, prevState) {
     //     var { fanDisplayOpen, currentPage } = this.props;
-    //     console.log('fan should open');
     // }
     //
     render() {

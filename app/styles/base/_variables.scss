@@ -4,6 +4,7 @@ $shadow-color: #cccccc;
 $project-img-size: 200px;
 $yellow-green: #b9ff1b;
 $yellow-green-header: #ddff91;
+$dark-red: #9a0000;
 $light-yellow-green: #ecffc2;
 $text-color: #333333;
 $light-text-color: #ffffff;
@@ -12,3 +13,20 @@ $heading-color: #505050;
 $highlighted-text-color: #cccccc;
 $background-highlight: #999999;
 $link-color: #355836;
+
+@mixin hover-border {
+    color: $link-color;
+    &:after {
+        content:'';
+        height: 1px;
+        width: 0;
+        background-color: $link-color;
+        transition: all 0.5s ease-out;
+    }
+
+    &:hover {
+        &:after {
+            width: 100%;
+        }
+    }
+}

@@ -92,7 +92,6 @@ export default ProjectList;
 
     // handleTouchStart(e) {
     //     this.isTouching = true;
-    //     console.log(e.touches);
     //     this.startingCoordinates = {
     //         x: e.touches[0].clientX,
     //         y: e.touches[0].clientY
@@ -108,7 +107,6 @@ export default ProjectList;
     //     var lastPos = parseInt(this._elt.style.left);
     //     if (!lastPos) { lastPos = 0; }
     //
-    //     console.log(lastPos);
     //     if (lastPos > 0) {
     //         this._elt.style.left = '0px';
     //     } else if (lastPos < -this._elt.offsetWidth + window.innerWidth) {
@@ -126,7 +124,6 @@ export default ProjectList;
     // handleTouchEnd(e) {
     //     var { dispatch } = this.props;
     //     this.isTouching = false;
-    //     console.log('touch end on list');
     //     dispatch(actions.stopDragging());
     // }
 

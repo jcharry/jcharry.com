@@ -39,7 +39,6 @@ class Filter extends React.Component {
 
     toggleItem(key) {
         const { dispatch } = this.props;
-        console.log(`${key} clicked`);
         dispatch(actions.setProjectListFilter(key));
         this.setState({
             items: this.state.items.map((item) => {

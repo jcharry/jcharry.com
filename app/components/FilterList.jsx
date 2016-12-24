@@ -52,7 +52,6 @@ class FilterList extends React.Component {
     render() {
         const { items, handleToggle } = this.props;
         // const itemsLeft = items.filter(({data: {isOn}}) => {
-        //     console.log(isOn);
         //     return !isOn;
         // }).length;
 

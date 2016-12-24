@@ -1,4 +1,5 @@
-var path         = require('path');
+var path = require('path');
+console.log(__dirname);
 module.exports = {
     loaders: [
         {
@@ -16,6 +17,11 @@ module.exports = {
             query: {
                 presets: ['react', 'es2015', 'stage-2']
             }
+        },
+        {
+            test: /\.jsx?$/,
+            loader: __dirname + '/pre-loader',
+            exclude: /node_modules/
         },
         {
             test: /\.scss/,

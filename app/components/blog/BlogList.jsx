@@ -67,6 +67,9 @@ class BlogList extends React.Component {
         const { posts } = this.props;
         return (
             <div className='blog-container row'>
+                <div className='blog-header'>
+                    <h1>blog</h1>
+                </div>
                 <TransitionMotion
                     defaultStyles={this.getDefaultStyles()}
                     styles={this.getStyles()}
