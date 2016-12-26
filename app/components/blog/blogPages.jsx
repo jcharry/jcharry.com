@@ -7,7 +7,264 @@
 import React from 'react';
 
 let posts = [
+    {
+        title: 'Building a Physics Engine, Pt. 3 - The Renderer',
+        id: 'physengine3',
+        url: 'physengine3',
+        content: (
+            <div>
+                <h1>Building a Physics Engine, Pt. 3 - The Renderer</h1>
+                <p>In this post we'll implement a simple Renderer object that will allow us to draw Bodies to the canvas</p>
+            </div>
+        )
+    },
+    {
+        title: 'Building a Physics Engine, Pt. 2 - A Body in The World',
+        id: 'physengine2',
+        url: 'physengine2',
+        content: (
+            <div>
+                <h1>Building a Physics Engine, Pt. 2 - The World and a Body</h1>
+                <p>The first part any good world, is, well, the world itself.  The stage.  The place where things exists.  This post will detail building out a simple world to keep track of all the objects that will eventually live inside it.  But before we do that, let's first make a simple object that can live in the world.  A Body</p>
 
+                <h2>The Body Object</h2>
+                <p>The first type of body we'll focus on is a simple rectangle, since it's really simple to get up and running.</p>
+                <p>First the skeleton of the object.</p>
+                <pre><code>
+let Body = {
+    init: function(options) {
+        options = options || {};
+
+        // Allow user to set styles for drawing to the canvas
+        this.style = {
+            fillStyle: options.fillStyle || 'rgba(0,0,0,0)',
+            lineWidth: options.lineWidth || 2,
+            strokeStyle: options.strokeStyle || '#abcabc'
+        };
+
+        // Capture position and size
+        this.position = {
+            x: options.x || 0,
+            y: options.y || 0
+        };
+        this.height = options.height || 10;
+        this.width = options.width || 10;
+    },
+
+    update: function() {
+        // Any update code will go in here
+    }
+};
+
+export default Body;
+                </code></pre>
+                <p>The structure here is relatively simple.  The Body object acts as a prototype to primitive shapes.  Any function shared between all primitive shapes (i.e. functions that both rectangles, circles, and polygons wil need) will live on this Body object.  By structuring code this way, we can ensure that we're not using up extra memory storing individual copies of shared functions.  These functions will exist in one spot in memory, and will be used by any and all primitive shapes as necessary.</p>
+                <p>So far we just have an <code>init</code> function and an <code>update</code> function.  I have a personal aversion to Javascript's <code>new</code> keyword, so I like to structure my code a little differently.  This way we'll use Body as a prototype, and initialize with it's <code>init</code> function.  You'll see how it'll work in just a moment</p>
+                <br />
+                <p>Now let's take a look at a simple rectangular primitive</p>
+                <pre><code>
+// Import the body we just created
+// Note, we saved Body.js in the same directory as this file (Rect.js)
+import Body from './Body';
+
+// Create a 'constructor' style function
+var rect = function(options) {
+    options = options || {};
+
+    // Create a body object using Body as a prototype
+    let B = Object.create(Body);
+    // Initialize with passed in options
+    B.init(options);
+    // Set it's type
+    B.type = 'rectangle';
+
+    /**
+     * Update location of vertices - used in update loop
+     * We'll eventually use these vertices to draw the rectangle
+     * into the canvas
+     */
+    B.updateVertices = function() {
+        let w = this.width,
+            h = this.height,
+            x = this.position.x,
+            y = this.position.y;
+        this.vertices = [
+            {x: x,     y: y},
+            {x: x + w, y: y},
+            {x: x + w, y: y + h},
+            {x: x,     y: y + h}
+        ];
+    };
+
+    B.updateVertices();
+    return B;
+};
+
+export default rect;
+                </code></pre>
+                <p>In Rect.js, we define a kind of 'constructor' function.  I put it in quotes because it's not a real constructor in the way that Javascript defines them.  Constructor functions are meant to be used with the <code>new</code> keyword.  This function serves the same purpose, in that it creates an object, set's some properties, then returns that object, but it does so without requiring the use of <code>new</code>.  In works in the following way:</p>
+                <ol>
+                    <li>First, load in the Body object from Body.js</li>
+                    <li><code>rect</code> takes an options object as it's only argument</li>
+                    <li>A new Body object <code>B</code> is created using <code>Object.create</code> then calling <code>B.init</code> and passing in the options object</li>
+                    <li>We add a few rectangle specific properties to <code>B</code>, including <code>type</code> and a method called <code>updateVertices</code></li>
+                    <li>Then we call <code>updateVertices()</code></li>
+                    <li>And finally return that object</li>
+                    <li><code>rect</code> is exported so that when we want to create a new rectangle primitive, we just call <code>rect(options)</code> without the <code>new</code> keyword.  Pretty neat.</li>
+            </ol>
+            <p>Before we move on, you might be asking yourself, 'What's this updateVertices function?'. Well, We're thinking a bit ahead at the moment and we know that eventually we'll want to have arbitrary polygons in our engine.  To make things more flexible, if we can define our primitives as a set of vertices, rather than an x and y position and a width and a height, then we can more more easily handle arbitrary polygons, that don't have a constant width or height.  By keeping track of each vertex, we'll also be in a better position to handle object-object interaction because we'll need each vertex individually in order to perform collision detection.  So if it doesn't make sense now, hopefully it will as we move forward.  The other thing to note is that we wrap the vertices creation into a function so that we can call it on each update loop to update the vertices as the rectangle moves about the world.</p>
+
+            <h2>The World</h2>
+            <p>So now that we have a body object to put into our world, let's make the world.</p>
+            <p>In a new file called System.js, we'll create an object in a simlar fashion as the Body object from above.</p>
+            <pre><code>
+import hash from '../geometries/SpatialHash';
+
+const System = {};
+System.prototype = {
+    // Initialize properties
+    init: function(params) {
+        this.bodies = [];
+        this.width = params.width || 600;
+        this.height = params.height || 300;
+    },
+
+    /**
+    * Add an object to the system
+    * @param {object} obj - the body object to add
+    */
+    addObject: function(obj) {
+        // Forward thinking - eventually we'll have more primitives, right?
+        // And maybe we'll have other things besides bodies, who knows!
+        switch (obj.type) {
+            case 'rectangle':
+            case 'circle':
+            case 'polygon':
+                this.bodies.push(obj);
+                break;
+            default:
+                throw new Error('Can\'t add whatever you\'re trying to add');
+        }
+    },
+
+    // System needs to update on each render loop
+    update: function() {
+        // Loop through all bodies and update one at a time
+        this.bodies.forEach(body => {
+            body.update();
+        });
+    }
+};
+
+/**
+ * @public
+ * @param {object} params - initialization parameters
+ * @return {System}
+ *
+ * params
+ *  - width: int - width of entire system (usually canvas width)
+ *  - height: number - height of entire system
+ */
+const system = function(params) {
+    const s = Object.create(System.prototype);
+    s.init(params);
+    return s;
+};
+
+export default system;
+            </code></pre>
+            <p>So let's break down what's happening.  In the same fashion as the Body object, we're defining a System object that will be used a prototype.  It comes with an <code>init</code> function that can be called to initialize it's parameters.  An <code>addObject</code> function just pushes objects into an internal array to keep track of everything.  Notice that we're using falltlhrough in the <code>switch</code> statement.  This is because in the future I'm envisioning having several different types of things that can be added to the system.  To keep them separate, we add all bodies to <code>this.bodies</code> and any other stuff that comes along in the future that isn't a <code>Body</code> object can go into a different array.</p>
+            <p>Lastly we define an <code>update</code> function that will loop through all bodies and update them in turn.  Remember how we defined an <code>update</code> function on <code>Body</code>?</p>
+
+            <p>Once we've created our System object, we export a simple function that leverages the same pattern as the <code>Rect</code> and <code>Body</code>. <code>system</code> takes some initalization params, uses Object.create to make a new object with <code>System</code> as it's prototype, initializes the newly created system object, then returns it. Easy peasy.</p>
+
+            <h2>One more tweak to Body</h2>
+            <p>We have to make a quick addition to the Body's <code>update</code> function.</p>
+            <pre><code>
+    update: function() {
+        if (this.updateVertices) {
+            this.updateVertices();
+        }
+    }
+            </code></pre>
+            <p>We need to make sure that our rectangle's vertices actually get updated when <code>System</code> updates all the bodies. Otherwise our rectangle would never actually move.</p>
+
+            <h2>Using it</h2>
+            <p>So how would we actually use these?</p>
+            <p>Well, it's pretty straightforward.  Check it.</p>
+            <pre><code>
+import system from 'System';
+import rect from 'Rect';
+
+let s = system({
+    width: 900,
+    height: 600
+});
+
+let r = rect({
+    width: 50,
+    height: 50,
+    x: 20,
+    y: 30
+    });
+
+system.addObject(r);
+
+// Right now calling update doesn't really do anything because nothing is
+// moving
+system.update();
+
+// But if we wrap it in a loop
+setInterval(() => {
+    r.x += 1;
+    system.update();
+}, 100)
+
+// Then the rectangle's vertices will be updated as if it's moving 1 pixel to
+// the right every 100 milliseconds.
+            </code></pre>
+            <p>Stepping through the code above:</p>
+            <ol>
+                <li>First we initialize the system with a width and height</li>
+                <li>Then we create a rectangle at (20, 30) of size 50 x 50</li>
+                <li>We add the rectangle to the system</li>
+                <li>We're using setInterval to create an animation loop (we'll make this better later), but for now this is fine</li>
+                <li>Every 100 milliseconds, the rectangles position will get updated, then system.update will call the necessary code that updates the rectangles vertices.</li>
+            </ol>
+            <p>And that's it! Now we have a simple skeleton of a system and a way to create rectangular bodies.</p>
+            <p>Next we'll look into how to actually render this to the screen.</p>
+            </div>
+        )
+    },
+    {
+        title: 'Building a Physics Engine, Pt. 1 - The Why',
+        id: 'physengine1',
+        url: 'physengine1',
+        content: (
+            <div>
+                <h1>Building a Physics Engine, Pt. 1 - The Why</h1>
+                <p>If there's one thing we can all agree on it's that physics is really, really awesome. Now that we're all on the same page, let's get right to the point</p>
+                <p>In my striving to build a digital science lab, I quickly realized that I'd need a physics engine underpinning the whole thing.  I wanted objects to interact in a psuedo scientifically accurate way, and for that I'd need a system to keep track of objects and their interactions.  So what better tool than a physics engine?  After digging around, I found a handful of seemingly well made engines</p>
+                <ol>
+                    <li><a href='http://brm.io/matter-js/'>Matter.js</a></li>
+                    <li><a href='http://www.cannonjs.org/'>Cannon.js</a></li>
+                    <li><a href='http://wellcaffeinated.net/PhysicsJS/'>PhysicsJs</a></li>
+                    <li><a href='http://box2d-js.sourceforge.net/'>Box2DJS</a></li>
+                </ol>
+
+                <p>I guess you could say 'glutton for punishment', or 'why reinvent the wheel!?', but as I poked around these, I had the thought, 'hey, I could build one of these things'.  And so I decided to tred a well worn path and build my own physics engine.  The ultimate effort may not be fruitful in that I probably won't build as good of an engine as any of those listed above, but the benefits to me are plenty:</p>
+                <ol>
+                    <li>Really up my programming skills</li>
+                    <li>Get a chance to apply my undergrad physics degree</li>
+                    <li>Get a chance to work on a complicated system rather than a one off application</li>
+                    <li>Learn how to build a library designed to be used in other applications</li>
+                    <li>And generally get to have fun thinking about science</li>
+                </ol>
+
+                <p>So over the next few months, I'll be documenting my progress as I work through building out this engine, and ultimately use it to build a digital science lab meant to encourage enthusiam and experimentation with regards to not just physics, but science as a whole.  Stay tuned.</p>
+            </div>
+        )
+    },
 
 
     {
