@@ -18,21 +18,27 @@
         }
     }
 
-
     // TODO: Combine with .project-page, since they're basically the same...
     .blog-page {
 
-        pre {
-            background-color: black;
-            padding: 0 1rem;
-            code {
-                background-color: transparent;
-                color: #eeffbc;
-                border: none;
+        a {
+            border-bottom: none;
+            transition: border-bottom 0.4s ease-in-out;
+
+            &:hover {
+                border-bottom: 1px solid $link-color;
             }
         }
 
+        .dir-tree {
+            font-size: 0.8rem;
+        }
 
+        code {
+            background-color: #002b36;
+            color: #eeffbc;
+            border: none;
+        }
     }
     .blog-post-list {
         margin-top: 50px;

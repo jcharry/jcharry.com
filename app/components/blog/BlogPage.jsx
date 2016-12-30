@@ -20,7 +20,7 @@ class BlogPage extends React.Component {
             <Motion defaultStyle={{opacity: 0, marginTop: 200}} style={{opacity: spring(1), marginTop: spring(0)}}>
                 {style => {
                     return (
-                        <div style={style} className='blog-page row align-center small-10 med-8 large-6'>
+                        <div style={style} className='blog-page row align-center small-12 medium-10 large-8'>
                             {post.content}
                         </div>
                     );
