@@ -15,7 +15,7 @@ class BlogListItem extends React.Component {
     render() {
         const { page, style } = this.props;
         return (
-            <Link to={`blog/${page.url}`} className='blog-list-item' style={style}>
+            <Link to={`/blog/${page.url}`} className='blog-list-item' style={style}>
                 <div>
                     <img src={page.thumbnailSrc} />
                 </div>
