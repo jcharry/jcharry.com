@@ -59,6 +59,7 @@
     "react": "15.1.0",
     "react-dom": "15.1.0",
     "react-dropdown": "^1.2.0",
+    "react-latex": "0.0.8",
     "react-motion": "0.4.4",
     "react-motion-menu": "^0.2.2",
     "react-redux": "4.4.5",
