@@ -27,7 +27,8 @@
     "karma-mocha-reporter": "2.0.4",
     "karma-sourcemap-loader": "0.3.7",
     "karma-webpack": "1.7.0",
-    "mocha": "2.5.3"
+    "mocha": "2.5.3",
+    "react-router-sitemap": "^1.0.8"
   },
   "dependencies": {
     "autoprefixer": "6.4.0",
