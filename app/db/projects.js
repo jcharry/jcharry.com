@@ -1,7 +1,16 @@
 export default {
+    hundreddays: {
+        title: '100 Days of Algorithms',
+        category: 'visual',
+        blurb: 'Visualizing algorithms, everyday',
+        imgsrc: 'projects/hundreddays/insertion-sort-day3-small.gif',
+        date: 'ITP | SPRING 2017',
+        id: 'hundreddays',
+        projectLink: 'https://100daysofalgorithms.tumblr.com/'
+    },
     pds: {
         title: 'Digital Prints',
-        category: 'design',
+        category: 'visual',
         blurb: 'A series of generative prints',
         imgsrc: 'projects/pds/pds_thumb.png',
         date: 'ITP | FALL 2016',

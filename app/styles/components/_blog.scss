@@ -38,6 +38,15 @@
             margin-top: 1rem;
         }
 
+        .post-date {
+            font-size: 0.8rem;
+            color: $link-color;
+        }
+
+        pre {
+            font-size: 0.8rem;
+        }
+
         code {
             background-color: #002b36;
             color: #eeffbc;

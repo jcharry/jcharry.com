@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { Motion, spring } from 'react-motion';
 import Tween from 'app/lib/Tween';
 import { Link } from 'react-router';
+import ExternalLink from 'app/components/ExternalLink';
 
 import * as actions from 'app/actions/actions';
 
@@ -22,6 +23,20 @@ export class Project extends React.Component {
         var img = require('../images/'+project.imgsrc);
 
         const url = `/work/id/${project.id}`;
+
+        if (id === 'hundreddays') {
+            return (
+                <ExternalLink cls='project'
+                    url={project.projectLink}
+                    style={style}>
+                        <div className='prj-img-bg'>
+                            <img className='prj-img' src={`/${img}`}/>
+                        </div>
+                        <h3 className='project-item-title'>{project.title}</h3>
+                        <p className='project-item-subheader'>{project.blurb}</p>
+                </ExternalLink>
+            );
+        }
 
         return (
             <Link className='project'

@@ -18,7 +18,7 @@ class Filter extends React.Component {
             items: [
                 { key: 'all', data: {text: 'All', isOn: true }},
                 { key: 'physical', data: {text: 'Physical', isOn: false }},
-                { key: 'design', data: {text: 'Design', isOn: false }},
+                { key: 'visual', data: {text: 'Visual', isOn: false }},
                 { key: 'web', data: {text: 'Web', isOn: false }},
                 { key: 'apps', data: {text: 'Apps', isOn: false }},
                 { key: 'experiments', data: {text: 'Experiments', isOn: false }}
