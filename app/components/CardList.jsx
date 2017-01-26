@@ -39,26 +39,36 @@ export class CardList extends React.Component {
                 next: 'Resume',
                 last: 'About',
                 children: [
-                    <div key='proficient'>
-                        <h3>Proficient</h3>
-                        <p>Javascript/ES6</p>
-                        <p>React/Redux</p>
-                        <p>Node/Express</p>
-                        <p>D3</p>
+                    <div key='languages'>
+                        <h3><pre><code>$ which languages</code></pre></h3>
+                        <p>Javascript / ES6 <span className='mastery'>mastery</span></p>
+                        <p>Python <span className='proficient'>proficient</span></p>
+                        <p>HTML/CSS/SASS <span className='highly-proficient'>highly proficient</span></p>
                     </div>,
-                    <div key='solid'>
-                        <h3>Solid</h3>
-                        <p>Python w/ Flask</p>
-                        <p>Mapping w/ Mapbox, D3</p>
-                        <p>2D Canvas Animation</p>
-                        <p>Webpack</p>
-                        <p>Databases - Firebase, MongoDB</p>
+                    <div key='frameworks'>
+                        <h3><pre><code>$ which frameworks</code></pre></h3>
+                        <p>React/Redux <span className='highly-proficient'>highly proficient</span></p>
+                        <p>Flask and Django <span className='improving'>improving</span></p>
+                        <p>MapboxGL <span className='proficient'>proficient</span></p>
+                        <p>jQuery, D3, MapboxGL, HTML5 canvas <span className='proficient'>proficient</span></p>
+                        <p>Phaser, Box2D</p>
                     </div>,
-                    <div key='improving'>
-                        <h3>Improving</h3>
-                        <p>Testing w/ Mocha, Karma</p>
-                        <p>Machine Learning Algorithms</p>
-                        <p>PHP/SQL</p>
+                    <div key='databases'>
+                        <h3><pre><code>$ which backend</code></pre></h3>
+                        <p>Node/Express <span className='mastery'>mastery</span></p>
+                        <p>NoSQL - MongoDB (mongoose), Firebase <span className='proficient'>proficient</span></p>
+                        <p>SQL <span className='improving'>improving</span></p>
+                        <p>Nginx, Linux/Unix <span className='proficient'>proficient</span></p>
+                        <p>Webpack <span className='proficient'>proficient</span></p>
+                    </div>,
+                    <div key='other'>
+                        <h3><pre><code>$ what else</code></pre></h3>
+                        <h3></h3>
+                        <p>Testing with Mocha/Chai/Karma<span className='improving'>improving</span></p>
+                        <p>Adobe Suite</p>
+                        <p>Strong knowlege of Web Infrastructure, HTTP, REST, AJAX, Promises</p>
+                        <p>Git/Github, OOP design, Functional Paradigms</p>
+                        <p>Physics Programming <span className='improving'>improving</span></p>
                     </div>
                 ]
             },
@@ -86,6 +96,29 @@ export class CardList extends React.Component {
                 ]
             }
         ];
+
+        this.handleCardChange = this.handleCardChange.bind(this);
+    }
+
+    handleCardChange(direction) {
+        let { currentCard, dispatch } = this.props;
+
+        console.log('button clicked');
+
+        // Only render the card that's visible
+        let visibleCard = this.cards.filter((card) => {
+            return currentCard.id === card.title ? card : null;
+        });
+
+        var card = visibleCard[0];
+
+        switch (direction) {
+            case 'last':
+                dispatch(actions.nextCard(card.last, 'back'));
+                break;
+            case 'next':
+                dispatch(actions.nextCard(card.next, 'forward'));
+        }
     }
 
     render() {
@@ -99,9 +132,15 @@ export class CardList extends React.Component {
         var card = visibleCard[0];
 
         return (
-            <div className='card-list'>
-                <p>swipe or drag</p>
-                <Card dir={currentCard.dir} next={card.next} last={card.last} key={card.title} contents={card} />
+            <div>
+                <div className='card-list'>
+                    <p>swipe or drag</p>
+                    <Card dir={currentCard.dir} next={card.next} last={card.last} key={card.title} contents={card} />
+                    <div className='arrows'>
+                        {card.last ? <button onClick={() => {this.handleCardChange('last'); }}>LAST</button> : <button></button>}
+                        {card.next ? <button onClick = {() => {this.handleCardChange('next'); }}>NEXT</button> : <button></button>}
+                    </div>
+                </div>
             </div>
         );
     }

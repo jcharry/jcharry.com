@@ -75,7 +75,6 @@ export class Card extends React.Component {
             this.startingCoordinates.x = e.screenX || e.touches[0].clientX;
 
             this._elt.style.transform = 'rotate('+parseInt(this._elt.style.left)/100+'deg)';
-            // + 'scale(' + (1-Math.abs(parseInt(this._elt.style.left))/1000) + ')';
         }
     }
 
@@ -87,7 +86,9 @@ export class Card extends React.Component {
     }
 
     render() {
-        var { contents, dir } = this.props;
+        var { contents, dir, next, last } = this.props;
+        function renderButtons() {
+        }
         return (
             <Motion
                 defaultStyle={{left: dir === 'forward' ? window.innerWidth : -window.innerWidth}}
@@ -100,6 +101,7 @@ export class Card extends React.Component {
                                 {contents.children}
                             </div>
                         </div>
+
                     </div>
                 }
             </Motion>

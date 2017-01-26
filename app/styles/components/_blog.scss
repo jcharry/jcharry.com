@@ -21,6 +21,15 @@
     // TODO: Combine with .project-page, since they're basically the same...
     .blog-page {
 
+        .blog-page-links {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            a {
+                font-size: 0.7rem;
+            }
+        }
+
         a {
             border-bottom: none;
             transition: border-bottom 0.4s ease-in-out;
