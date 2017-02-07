@@ -9,7 +9,7 @@ import Tween from 'app/lib/Tween';
  *
  *  It's fundamentally a PIXI sprite object
  *  which means it's lifecycle is managed
- *  outside React.  It needs to dispatch 
+ *  outside React.  It needs to dispatch
  *  one action, though - when it's clicked
  *  so that it can open the fan display
  *
@@ -20,7 +20,7 @@ import Tween from 'app/lib/Tween';
  *  component.
  *
  *  Things to know:
- *      The animation loop is handled in the 
+ *      The animation loop is handled in the
  *      Canvas component, so there's a reference
  *      to an array of tweens that the Canvas looks
  *      through to figure out if any things needs
@@ -314,12 +314,15 @@ export default class MyFace {
         var finalScale = 1;
         var scaleDist = finalScale - startScale;
 
+        let self = this;
         var homePageTween = new Tween(this.tweens)
             .duration(1000)
             .start({ x: x, y: y })
             .end({ x: xDist, y: yDist })
             .easing('easeInOutQuad')
             .complete(() => {
+                self.sprite.x = window.innerWidth / 2;
+                self.sprite.y = window.innerHeight / 2;
             });
 
         var scaleTween = new Tween(this.tweens)

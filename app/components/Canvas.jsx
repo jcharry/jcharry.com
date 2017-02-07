@@ -17,6 +17,7 @@ export class Canvas extends React.Component {
         this.handleWindowResize = this.handleWindowResize.bind(this);
         this.tweens = [];
         this.move = this.move.bind(this);
+        Pixi.utils._saidHello = true;
     }
 
     // Pixi.js animation loop

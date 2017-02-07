@@ -27,6 +27,8 @@ ga('send', 'pageview');
 // Main styles
 import './styles/main.scss';
 
+console.info("Thanks for stopping by and checking out my site!");
+
 ReactDOM.render(
     <div>
         <Provider store={store}>

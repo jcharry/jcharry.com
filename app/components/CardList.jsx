@@ -41,34 +41,26 @@ export class CardList extends React.Component {
                 children: [
                     <div key='languages'>
                         <h3><pre><code>$ which languages</code></pre></h3>
-                        <p>Javascript / ES6 <span className='mastery'>mastery</span></p>
-                        <p>Python <span className='proficient'>proficient</span></p>
-                        <p>HTML/CSS/SASS <span className='highly-proficient'>highly proficient</span></p>
+                        <p>Javascript / ES6</p>
+                        <p>Python</p>
+                        <p>HTML/CSS/SASS</p>
                     </div>,
                     <div key='frameworks'>
                         <h3><pre><code>$ which frameworks</code></pre></h3>
-                        <p>React/Redux <span className='highly-proficient'>highly proficient</span></p>
-                        <p>Flask and Django <span className='improving'>improving</span></p>
-                        <p>MapboxGL <span className='proficient'>proficient</span></p>
-                        <p>jQuery, D3, MapboxGL, HTML5 canvas <span className='proficient'>proficient</span></p>
+                        <p>React/Redux</p>
+                        <p>jQuery, D3, MapboxGL, HTML5 canvas</p>
                         <p>Phaser, Box2D</p>
                     </div>,
-                    <div key='databases'>
+                    <div key='backend'>
                         <h3><pre><code>$ which backend</code></pre></h3>
-                        <p>Node/Express <span className='mastery'>mastery</span></p>
-                        <p>NoSQL - MongoDB (mongoose), Firebase <span className='proficient'>proficient</span></p>
-                        <p>SQL <span className='improving'>improving</span></p>
-                        <p>Nginx, Linux/Unix <span className='proficient'>proficient</span></p>
-                        <p>Webpack <span className='proficient'>proficient</span></p>
+                        <p>Node/Express/Webpack</p>
+                        <p>NoSQL - MongoDB (mongoose), Firebase</p>
+                        <p>Nginx, Linux/Unix</p>
                     </div>,
                     <div key='other'>
                         <h3><pre><code>$ what else</code></pre></h3>
-                        <h3></h3>
-                        <p>Testing with Mocha/Chai/Karma<span className='improving'>improving</span></p>
-                        <p>Adobe Suite</p>
-                        <p>Strong knowlege of Web Infrastructure, HTTP, REST, AJAX, Promises</p>
+                        <p>Web Infrastructure, HTTP, REST, AJAX, Promises</p>
                         <p>Git/Github, OOP design, Functional Paradigms</p>
-                        <p>Physics Programming <span className='improving'>improving</span></p>
                     </div>
                 ]
             },
