@@ -8,3 +8,4 @@ dist/*.html
 config/*.env
 creds
 assets
+screencaps

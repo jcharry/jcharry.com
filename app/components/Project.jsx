@@ -13,18 +13,38 @@ export class Project extends React.Component {
         super(props);
     }
 
+    componentDidMount() {
+        console.log('componentDidMount');
+    }
+
     render() {
+        console.log('rendering');
         var { id, style, selectedProject, projects } = this.props;
 
         // TODO: Put this in a separate file
-        var map = ['tale', 'ingredients', 'cocoa', 'eafus', 'plasmicreflections', 'quppled', 'qad', 'solarsynth', 'colorflowers', 'artistcomp', 'particlesandwaves' ];
+        // var map = ['tale', 'ingredients', 'cocoa', 'eafus', 'plasmicreflections', 'quppled', 'qad', 'solarsynth', 'colorflowers', 'artistcomp', 'particlesandwaves' ];
 
         const project = projects[id];
-        var img = require('../images/'+project.imgsrc);
+
+        // Select image
+        // let imgsrc;
+        if (!this.imgsrc) {
+            console.log('imgsrc undefined');
+            switch (typeof project.imgsrc) {
+                case 'object':
+                    // Choose random img
+                    this.imgsrc = project.imgsrc[Math.floor(Math.random() * project.imgsrc.length)];
+                    break;
+                case 'string':
+                    this.imgsrc = project.imgsrc;
+                    break;
+            }
+        }
+        var img = require('../images/' + this.imgsrc);
 
         const url = `/work/id/${project.id}`;
 
-        if (id === 'hundreddays') {
+        if (project.externalLink) {
             return (
                 <ExternalLink cls='project'
                     url={project.projectLink}
@@ -38,21 +58,22 @@ export class Project extends React.Component {
                         </div>
                 </ExternalLink>
             );
+        } else {
+            return (
+                <Link className='project'
+                    to={url}
+                    style={style}>
+                        <div className='prj-img-bg'>
+                            <img className='prj-img' src={`/${img}`}/>
+                        </div>
+                        <div className='prj-text'>
+                            <h3 className='project-item-title'>{project.title}</h3>
+                            <p className='project-item-subheader'>{project.blurb}</p>
+                        </div>
+                </Link>
+                );
         }
 
-        return (
-            <Link className='project'
-                to={url}
-                style={style}>
-                    <div className='prj-img-bg'>
-                        <img className='prj-img' src={`/${img}`}/>
-                    </div>
-                    <div className='prj-text'>
-                        <h3 className='project-item-title'>{project.title}</h3>
-                        <p className='project-item-subheader'>{project.blurb}</p>
-                    </div>
-            </Link>
-            );
     }
 }
 

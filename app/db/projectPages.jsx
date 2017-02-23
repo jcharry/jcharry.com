@@ -203,11 +203,8 @@ export default {
             <h1>Solar Synthesizer</h1>
             <p className='project-date'>ITP | OCT 2015</p>
             <p>Clicking around draws lines. When planets cross those lines, they make music. Sound fun? Done entirely in p5.js</p>
-            <div className='video-wrapper'>
-                <iframe src='http://itp.jcharry.com/solarSystem/' ></iframe>
-            </div>
-            <p>If it doesn't look great on your browser, here's the full link</p>
-            <ExternalLink url='http://itp.jcharry.com/solarSystem'>Solar Synth</ExternalLink>
+            <img src='/images/projects/solarsynth/solarsynth.gif' />
+            <p>The planets, while simply styled, orbit in physically accurate proprotions (both in position and velocity).</p>
         </div>,
     colorflowers:
         <div>
