@@ -71,7 +71,13 @@ export class FanMenu extends React.Component {
             {title: 'contact', url: '/contact'},
             {title: 'blog', url: '/blog'},
             {title: 'itp', url: 'http://itp.jcharry.com', external: true}
-        ] : [];
+        ] : [
+            {title: 'work', url: '/work'},
+            {title: 'about', url: '/about'},
+            {title: 'contact', url: '/contact'},
+            {title: 'blog', url: '/blog'},
+            {title: 'itp', url: 'http://itp.jcharry.com', external: true}
+        ];
         return (
             <div className='fan-menu'>
                 <TransitionMotion
@@ -84,7 +90,7 @@ export class FanMenu extends React.Component {
                             return <MenuItem
                                 key={key}
                                 style={style}
-                                open={fanDisplayOpen}
+                                open
                                 title={data.title}
                                 url={data.url}
                                 external={data.external}/>;
@@ -103,4 +109,4 @@ export default connect((state) => {
         currentPage: state.currentPage
     };
 })(FanMenu);
- 
+

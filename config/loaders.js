@@ -5,18 +5,12 @@ module.exports = {
         {
             test: /\.js?$/,
             loader: 'babel-loader',
-            exclude: /node_modules/,
-            query: {
-                presets: ['es2015']
-            }
+            exclude: /node_modules/
         },
         {
             test: /\.jsx?$/,
             loader: 'babel-loader',
-            exclude: /node_modules/,
-            query: {
-                presets: ['react', 'es2015', 'stage-2']
-            }
+            exclude: /node_modules/
         },
         {
             test: /\.jsx?$/,
@@ -50,4 +44,4 @@ module.exports = {
             loader: 'transform?brfs'
         }
     ]
-}; 
+};
