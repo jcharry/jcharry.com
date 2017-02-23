@@ -32,8 +32,10 @@ export class Project extends React.Component {
                         <div className='prj-img-bg'>
                             <img className='prj-img' src={`/${img}`}/>
                         </div>
-                        <h3 className='project-item-title'>{project.title}</h3>
-                        <p className='project-item-subheader'>{project.blurb}</p>
+                        <div className='prj-text'>
+                            <h3 className='project-item-title'>{project.title}</h3>
+                            <p className='project-item-subheader'>{project.blurb}</p>
+                        </div>
                 </ExternalLink>
             );
         }
@@ -45,8 +47,10 @@ export class Project extends React.Component {
                     <div className='prj-img-bg'>
                         <img className='prj-img' src={`/${img}`}/>
                     </div>
-                    <h3 className='project-item-title'>{project.title}</h3>
-                    <p className='project-item-subheader'>{project.blurb}</p>
+                    <div className='prj-text'>
+                        <h3 className='project-item-title'>{project.title}</h3>
+                        <p className='project-item-subheader'>{project.blurb}</p>
+                    </div>
             </Link>
             );
     }
