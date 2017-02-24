@@ -14,7 +14,7 @@ class Filter extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            open: false,
+            open: true,
             items: [
                 { key: 'all', data: {text: 'All', isOn: true }},
                 { key: 'physical', data: {text: 'Physical', isOn: false }},
@@ -32,9 +32,9 @@ class Filter extends React.Component {
     toggleFilter(e) {
         e.preventDefault();
         // dispatch(actions.toggleFilterMenu(!this.state.open);
-        this.setState({
-            open: !this.state.open
-        });
+        // this.setState({
+        //     open: !this.state.open
+        // });
     }
 
     toggleItem(key) {
@@ -68,9 +68,9 @@ class Filter extends React.Component {
         let items = this.state.open ? this.state.items : [];
         return (
             <div className='filter'>
-                <p onClick={this.toggleFilter}>{projectListFilter}
-                    {this.state.open ?  <span className='unicode'>&#8673;</span> :<span className='unicode'>&#8675;</span>}
-                </p>
+                {/* <p onClick={this.toggleFilter}>{projectListFilter} */}
+                {/*     {this.state.open ?  <span className='unicode'>&#8673;</span> :<span className='unicode'>&#8675;</span>} */}
+                {/* </p> */}
 
                 <FilterList handleToggle={this.toggleItem} items={items}/>
             </div>

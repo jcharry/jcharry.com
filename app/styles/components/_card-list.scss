@@ -52,11 +52,12 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        background-color: rgba(0,0,0,0.7);
+        background-color: $shadow-color;
     }
 
     .card-text {
-        color: $light-text-color;
+        // color: $light-text-color;
+        color: $text-color;
     }
 
     > div:active {
@@ -64,7 +65,8 @@
     }
 
     .card-contents:first-child {
-        color: $light-text-color;
+        // color: $light-text-color;
+        color: $text-color;
     }
 
     .card-contents > h2 {

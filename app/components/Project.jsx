@@ -40,7 +40,7 @@ export class Project extends React.Component {
                     break;
             }
         }
-        var img = require('../images/' + this.imgsrc);
+        var img = 'images/' + this.imgsrc;
 
         const url = `/work/id/${project.id}`;
 

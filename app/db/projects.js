@@ -28,7 +28,7 @@ export default {
         title: 'Digital Prints',
         category: 'visual',
         blurb: 'A series of generative prints made in Rune.js',
-        imgsrc: 'projects/pds/pds_thumb.png',
+        imgsrc: 'projects/pds/pds.gif',
         date: 'ITP | FALL 2016',
         id: 'pds',
         projectLink: 'https://github.com/jcharry/programming-design-systems-projects',
@@ -81,7 +81,7 @@ export default {
     cocoa: {
         title:"An Interactive History of the Cocoa Bean",
         category: "web",
-        imgsrc: "projects/cocoa/cocoa_thumb.png",
+        imgsrc: "projects/cocoa/cocoa.gif",
         blurb: "Web based slideshow",
         desc: "A slideshow style web page developed from scratch to educate folks about the humble cocoa bean. I wanted to try to implement simple transitions without leaning on libraries like jQuery for help.",
         technologies: "Vanilla Javascript, HTML, CSS",
@@ -105,6 +105,17 @@ export default {
     //     credits: "Jamie Charry. Feb 2016",
     //     longdesc:""
     // },
+    traceroute: {
+        title: "Traceroute Visualizer",
+        category: "experiments",
+        imgsrc: "projects/traceroute/traceroute.gif",
+        blurb: "The internet is a fun place.",
+        date: "ITP | FALL 2016",
+        id: "traceroute",
+        documentationLink: "http://itp.jcharry.com/2016/09/19/traceroute/",
+        projectLink: 'http://itp.jcharry.com/traceroute/',
+        externalLink: true
+    },
     plasmicreflections: {
         title:"Plasmic Reflection",
         category: "physical",
@@ -134,7 +145,7 @@ export default {
     qad: {
         title: "Question a Day",
         category: "web",
-        imgsrc: "projects/qad/qad_thumb.png",
+        imgsrc: "projects/qad/qad.gif",
         blurb: "Public Journal of Feelings",
         desc: "In today's facebook flooded internet world, we're often inundated with other people's feelings. Ultimately people are looking to connect with one. Question a Day is a simple attempt to allow for the sharing of deep feelings, semi-anonymously, to encourage us to look beyond our own feelings and to connect with those of a stranger.",
         technologies: "Javascript, Node, MongoDB, Sentiment analysis, p5.js",
@@ -163,7 +174,7 @@ export default {
     colorflowers: {
         title:"HSB Drawings",
         category: "experiments",
-        imgsrc: "projects/colorflowers/hsb_thumb.png",
+        imgsrc: "projects/colorflowers/hsb.gif",
         blurb: "A few algorithmic drawings",
         technologies: "p5.js",
         desc: "With only a few simple translations, rotations, loops, and a bit of randomization, it's quite amazing how many possible drawings can be created with just a few minor tweaks",
