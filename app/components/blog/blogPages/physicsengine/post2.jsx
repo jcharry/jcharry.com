@@ -13,7 +13,7 @@ registerLanguage('vim', vim);
 registerLanguage('html', html);
 
 export default (
-             <div>
+            <div itemProp='articleBody'>
                 <h1>Building a Physics Engine, Pt. 2 - The World and a Body</h1>
                 <p className='post-date'>Dec 28, 2016</p>
                 <p>Before we start, the code that follows kind of exists in isolation.  By that I mean it's written in ES6, with no way to actually use it in a browser.  If you'd first like to set up your environment to be able to code in ES6, as well as bundle all your files for use in a browser, and a way to write a demo app alongside the libraries development, jump ahead to <Link to='/blog/physengine5'>Part 5 - Webpack Setup</Link>, then come back.</p>

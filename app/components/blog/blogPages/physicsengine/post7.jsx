@@ -12,7 +12,7 @@ registerLanguage('vim', vim);
 registerLanguage('html', html);
 
 export default (
-     <div>
+     <div itemProp='articleBody'>
         <h1>Building a Physics Engine, Pt. 7 - Axis-Aligned Bounding-Box (AABB)</h1>
         <p className='post-date'>Jan 3, 2017</p>
         <p>The AABB, or axis-aligned bounding-box, represents a non-rotated square that outlines an arbitrary shape.  It's easier to see with an image</p>

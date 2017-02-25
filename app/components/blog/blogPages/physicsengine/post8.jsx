@@ -12,7 +12,7 @@ registerLanguage('vim', vim);
 registerLanguage('html', html);
 
 export default (
-     <div>
+     <div itemProp='articleBody'>
         <h1>Building a Physics Engine, Pt. 8 - Spatial Subdivision</h1>
         <p className='post-date'>Jan 5, 2017</p>
         <p>Let's think about collisions for a moment.  There's a really simple way to check if two circles are colliding: get the distance between the two centers, then compare that distance to the sum of the two radii of the circles.  If the distance is smaller than the sum of the radii, then we know the circles are overlapping.  So with that in mind, let's take a leap and imagine that we have 100 circles on the canvas, like so:</p>

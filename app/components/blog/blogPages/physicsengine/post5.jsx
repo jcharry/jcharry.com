@@ -13,7 +13,7 @@ registerLanguage('vim', vim);
 registerLanguage('html', html);
 
 export default (
-    <div>
+     <div itemProp='articleBody'>
         <h1>Building a Physics Engine, Pt. 5 - Organization, Webpack, and a Library</h1>
         <p>I've read a ton of Javascript tutorials over the years.  And I find that even the ones that are excellently written, often leave you without much context.  They tend to focus on one thing, and try to do that one thing really well.  I'm not suggesting that people write about every little detail, no matter how trivial, but often enough I've been left scratching my head in puzzlement over a minor detail that the author assumed was too trivial to spend time explaining.  Those rabbit holes waste time, and lead to frustration.  As a result, when I decided to document the process of building this engine, I told myself I'd be overly explicit.  Like, to the point where a lot of the stuff you might read is too specific, too detailed, too trivial.  But there's nothing that isn't confusing to at least one person, and what's trivial for one might be confusing for others.  So, in that vein, let's talk organization.</p>
         <h2>The directory structure</h2>

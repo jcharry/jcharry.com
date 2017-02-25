@@ -12,7 +12,7 @@ registerLanguage('vim', vim);
 registerLanguage('html', html);
 
 export default (
-     <div>
+     <div itemProp='articleBody'>
         <h1>Building a Physics Engine, Pt. 9 - Diversion 1: Visualizing Our System for Debugging</h1>
         <p className='post-date'>Jan 5, 2017</p>
         <p>A quick diversion to add some stuff to the renderer.  In previous posts some of the images have boxes surrounding either bodies or representing the spatial hash.  These visuals are enormously helpful because we can see that our system is working as expected.  The alternative is console logging out states of various objects and poking through them to make sure things look good.  It's super painful to do that, so let's make some additions to our Renderer.</p>

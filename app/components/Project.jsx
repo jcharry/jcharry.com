@@ -14,11 +14,9 @@ export class Project extends React.Component {
     }
 
     componentDidMount() {
-        console.log('componentDidMount');
     }
 
     render() {
-        console.log('rendering');
         var { id, style, selectedProject, projects } = this.props;
 
         // TODO: Put this in a separate file
@@ -29,7 +27,6 @@ export class Project extends React.Component {
         // Select image
         // let imgsrc;
         if (!this.imgsrc) {
-            console.log('imgsrc undefined');
             switch (typeof project.imgsrc) {
                 case 'object':
                     // Choose random img

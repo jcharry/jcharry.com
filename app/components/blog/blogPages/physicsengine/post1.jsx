@@ -13,7 +13,7 @@ registerLanguage('vim', vim);
 registerLanguage('html', html);
 
 export default (
-             <div>
+        <div itemProp='articleBody'>
                 <h1>Building a Physics Engine, Pt. 1 - The Why</h1>
                 <p className='post-date'>Dec 28, 2016</p>
                 <p>If there's one thing we can all agree on it's that physics is really, really awesome. Now that we're all on the same page, let's get right to the point</p>

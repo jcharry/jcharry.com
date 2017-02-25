@@ -12,7 +12,7 @@ registerLanguage('vim', vim);
 registerLanguage('html', html);
 
 export default (
-    <div>
+    <div itemProp='articleBody'>
         <h1>Building a Physics Engine, Pt. 10 - Collision Detection using Separating Axis Theorem (SAT)</h1>
         <p className='post-date'>Jan 27, 2017</p>
         <p>We've got our spatial subdivision in place.  We have arbitrary body objects.  We have a canvas based renderer to see what's happening.  And a system to run the whole simulation.  Now it's time to dig into a bit of a meatier topic - collision detection.</p>

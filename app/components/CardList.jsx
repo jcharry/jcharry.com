@@ -95,8 +95,6 @@ export class CardList extends React.Component {
     handleCardChange(direction) {
         let { currentCard, dispatch } = this.props;
 
-        console.log('button clicked');
-
         // Only render the card that's visible
         let visibleCard = this.cards.filter((card) => {
             return currentCard.id === card.title ? card : null;

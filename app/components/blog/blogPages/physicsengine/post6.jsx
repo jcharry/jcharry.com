@@ -13,7 +13,7 @@ registerLanguage('vim', vim);
 registerLanguage('html', html);
 
 export default (
-     <div>
+     <div itemProp='articleBody'>
         <h1>Building a Physics Engine, Pt. 6 - Translation, Rotation, and Scaling</h1>
         <p className='post-date'>Jan 1, 2017</p>
         <p>In this post, we'll talk about moving stuff around the screen.  We've seen the basics for how to update the position of an object based on it's velocity, but what if we want the object to rotate or scale?  This brings us into the world of vector transformations.  Let's start with the absolute simplest one - translation.</p>

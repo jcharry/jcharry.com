@@ -13,7 +13,7 @@ registerLanguage('vim', vim);
 registerLanguage('html', html);
 
 export default (
-             <div>
+            <div itemProp='articleBody'>
                 <h1>Building a Physics Engine, Pt. 3 - The Renderer</h1>
                 <p className='post-date'>Dec 29, 2016</p>
                 <p>In this post we'll implement a simple Renderer object that will allow us to draw Bodies to the canvas</p>

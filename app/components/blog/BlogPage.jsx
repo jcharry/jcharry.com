@@ -28,7 +28,7 @@ class BlogPage extends React.Component {
             <Motion defaultStyle={{opacity: 0, marginTop: 200}} style={{opacity: spring(1), marginTop: spring(0)}}>
                 {style => {
                     return (
-                        <div style={style} className='blog-page row align-center small-12 medium-10 large-8'>
+                        <div itemScope itemType='http://schema.org/BlogPosting' style={style} className='blog-page row align-center small-12 medium-10 large-8'>
                             <div className='blog-page-links'>
                                 {last !== undefined && <Link className='last' to={`/blog/${post.last}`}>Last: {last}</Link>}
                                 {next !== undefined && <Link className='next' to={`/blog/${post.next}`}>Next: {next}</Link>}

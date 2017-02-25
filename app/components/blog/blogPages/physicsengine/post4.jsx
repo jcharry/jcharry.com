@@ -13,7 +13,7 @@ registerLanguage('vim', vim);
 registerLanguage('html', html);
 
 export default (
-             <div>
+             <div itemProp='articleBody'>
                 <h1>Building a Physics Engine, Pt. 4 - Circle, Polygon, and the Update Loop</h1>
                 <p className='post-date'>Dec 31, 2016</p>
                 <p>Now we're going to add a few more primitive shapes - a circle and polygon, as well as make the shapes update.</p>
