@@ -19,9 +19,6 @@ class Home extends React.Component {
     componentDidMount() {
         const { dispatch } = this.props;
         dispatch(actions.currentPage('home'));
-        setTimeout(() => {
-            document.getElementsByClassName('click-me')[0].style.opacity = 1;
-        }, 1000);
     }
 
     render() {
@@ -29,10 +26,9 @@ class Home extends React.Component {
         return (
             <div className='home'>
                 <FanMenu />
-                <div style={{opacity: currentPage === 'home' ? 1 : 0}} className='home-text'>
-                    <p>Hi, I'm Jamie</p>
+                <div style={{opacity: currentPage === 'home' ? 1 : 0}} className='home-text' itemScope itemType='http://schema.org/Person'>
+                    <h1>Hi, I'm <span itemProp='name'>Jamie Charry</span></h1>
                     <p>Full Stack Web Developer & Creative Coder, Currently pursuing MPS at NYU ITP</p>
-                    {/* <img src={require('../images/clickme.png')} className='click-me' /> */}
                 </div>
             </div>
         );

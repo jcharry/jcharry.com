@@ -13,6 +13,12 @@
 
     transition: all 1s;
 
+    h1 {
+        font-size: 2rem;
+    }
+    span {
+        font-size: 2rem;
+    }
     p {
         color: $text-color;
         padding: 0 5rem 0 5rem;
@@ -34,7 +40,7 @@
         transition: opacity 0.5s;
     }
 
-    :last-child {
+    p:last-child {
         margin-top: 20px;
         font-size: 1rem;
     }
