@@ -1,28 +1,30 @@
 .home-text {
     width: 100vw;
     display: flex;
+    margin-left: 10px;
     flex-direction: column;
     padding-top: 70vh;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+    // justify-content: ;
+    // align-items: center;
+    // text-align: center;
     opacity: 0;
     position: fixed;
     top: 0;
     pointer-events: none;
+    width: 300px;
 
     transition: all 1s;
 
     h1 {
-        font-size: 2rem;
+        font-size: 1rem;
     }
     span {
-        font-size: 2rem;
+        font-size: 1rem;
         color: $link-color;
     }
     p {
         color: $text-color;
-        padding: 0 5rem 0 5rem;
+        padding: 0 5rem 0 0;
         /* width: 50vw; */
         max-width: 600px;
         margin: 0;

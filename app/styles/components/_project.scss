@@ -14,7 +14,7 @@
     padding: 5px;
     // max-width: 200px;
     // min-width: 150px;
-    width: 80%;
+    width: 60%;
 
     display: flex;
     // flex-direction: column;
@@ -201,6 +201,24 @@
          :first-child {
              padding-top: 1.5rem;
          }
+    }
+}
+
+@media (max-width: 640px) {
+   .project {
+       flex-direction: column;
+       width: 80%;
+   } 
+}
+@media (min-width: 640px) {
+    .project {
+        width: 70%;
+    }
+}
+
+@media (min-width: 1024px) {
+    .project {
+        width: 65%;
     }
 }
 

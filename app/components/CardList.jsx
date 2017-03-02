@@ -23,9 +23,7 @@ export class CardList extends React.Component {
                     <div key='man'>
                         <h3><pre><code>$ man jamiecharry</code></pre></h3>
                         <p>I grew up modding Xboxes for fun, then studied Physics because it's fun, now I build web applications because it's, you guessed it, super fun.</p>
-                        <br />
                         <p>I explore the intersection of technology, education, elucidation, and behavior change</p>
-                        <br />
                         <p>Utimately I want people to be more thoughtful of the world around them</p>
                     </div>,
                     <div key='whereis'>

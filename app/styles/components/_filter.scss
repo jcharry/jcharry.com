@@ -2,8 +2,10 @@
     /* position: absolute; */
     /* top: 10px; */
     /* left: 20px; */
-    position: relative;
-    top: 25px;
+    position: fixed;
+    top: 100px;
+    left: 30px;
+    width: 20%;
     color: black;
     display: flex;
     flex-direction: column;
@@ -25,6 +27,7 @@
 
     .filter-list {
         display: flex;
+        flex-direction: column;
         width: 80%;
         justify-content: space-around;
     }
@@ -58,4 +61,18 @@
             width: 70%;
         }
     }
+}
+@media (max-width: 640px) {
+    .filter {
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        padding-top: 10px;
+        width: 100%;
+
+        .filter-list {
+            flex-direction: row;
+        }
+    }
+
 }

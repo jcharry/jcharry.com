@@ -15,14 +15,27 @@ export default {
         blurb: 'An algorithm a day keeps the doctor away. Or something.',
         imgsrc: [
             'projects/hundreddays/insertion-sort-day3-small.gif',
+            'projects/hundreddays/day5-quick-sort.gif',
+            'projects/hundreddays/day13-separating-axis-theorem.gif',
+            'projects/hundreddays/day18-inorder-traversal.gif',
+            'projects/hundreddays/day23-prims-sparse-grid.gif',
+            'projects/hundreddays/day55-terrain-panning.gif',
+            'projects/hundreddays/day58-vigenere-cipher.gif',
             'projects/hundreddays/day42-poisson-disc.gif',
-            'projects/hundreddays/day53-height-map-perspective.gif',
-            'projects/hundreddays/day24-prim-mst-pathfinding.gif'
         ],
         date: 'ITP | SPRING 2017',
         id: 'hundreddays',
         projectLink: 'https://100daysofalgorithms.tumblr.com/',
         externalLink: true
+    },
+    javascriptworkshops: {
+        title: 'Javascript Workshops',
+        category: 'teaching',
+        blurb: 'A series of workshops about the fundamentals of our favorite little language',
+        imgsrc: 'projects/javascriptworkshops/javascript.gif',
+        date: 'FALL 2016',
+        id: 'javascriptworkshops',
+        projectLink: 'https://github.com/jcharry/JavaScript-Club-ITP-2016-2017'
     },
     pds: {
         title: 'Digital Prints',

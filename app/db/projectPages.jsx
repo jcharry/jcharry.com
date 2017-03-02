@@ -2,6 +2,11 @@ import React from 'react';
 import ExternalLink from 'app/components/ExternalLink';
 
 export default {
+    javascriptworkshops:
+        <div>
+            <h1>Javascript Workshops</h1>
+            <p className='project-data'>FALL 2016</p>
+        </div>,
     pds:
         <div>
             <h1>Digital Prints</h1>

@@ -150,8 +150,8 @@ export class Canvas extends React.Component {
         //}, 10000);
 
         var that = this;
-        requestAnimationFrame(this.animate);
-        this.move();
+        // requestAnimationFrame(this.animate);
+        // this.move();
     }
 
     move() {
