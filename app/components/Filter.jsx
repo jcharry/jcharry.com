@@ -1,9 +1,3 @@
-/*
- * Filter.jsx
- * Copyright (C) 2016 jamiecharry <jamiecharry@Jamies-Air-2.home>
- *
- * Distributed under terms of the MIT license.
- */
 import React from 'react';
 import { connect } from 'react-redux';
 import FilterList from 'app/components/FilterList';
@@ -13,9 +7,8 @@ import * as actions from 'app/actions/actions';
 class Filter extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            open: true,
-            items: [
+        const { projectListFilter } = this.props;
+        let items = [
                 { key: 'all', data: {text: 'All', isOn: true }},
                 { key: 'teaching', data: {text: 'Teaching', isOn: false }},
                 { key: 'physical', data: {text: 'Physical', isOn: false }},
@@ -23,7 +16,18 @@ class Filter extends React.Component {
                 { key: 'web', data: {text: 'Web', isOn: false }},
                 { key: 'apps', data: {text: 'Apps', isOn: false }},
                 { key: 'experiments', data: {text: 'Experiments', isOn: false }}
-            ]
+        ].map(item => {
+            return {
+                key: item.key,
+                data: {
+                    text: item.data.text,
+                    isOn: item.key === projectListFilter
+                }
+            };
+        });
+        this.state = {
+            open: true,
+            items
         };
 
         this.toggleFilter = this.toggleFilter.bind(this);

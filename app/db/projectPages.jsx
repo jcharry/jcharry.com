@@ -6,6 +6,8 @@ export default {
         <div>
             <h1>Javascript Workshops</h1>
             <p className='project-data'>FALL 2016</p>
+            <p>Over the course of several weeks, I led several workshops hour long workshops on basic Javascript.  The first was getting up and running with Node, and the second focused on a more fundamental principle - Object Oriented programming in Javascript.</p>
+            <p><ExternalLink url='https://github.com/jcharry/JavaScript-Club-ITP-2016-2017'>Repo with code can be found here</ExternalLink></p>
         </div>,
     pds:
         <div>
