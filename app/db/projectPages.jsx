@@ -4,10 +4,18 @@ import ExternalLink from 'app/components/ExternalLink';
 export default {
     javascriptworkshops:
         <div>
-            <h1>Javascript Workshops</h1>
+            <h1>Workshops</h1>
+            <h2>Basic Javascript</h2>
             <p className='project-data'>FALL 2016</p>
             <p>Over the course of several weeks, I led several workshops hour long workshops on basic Javascript.  The first was getting up and running with Node, and the second focused on a more fundamental principle - Object Oriented programming in Javascript.</p>
-            <p><ExternalLink url='https://github.com/jcharry/JavaScript-Club-ITP-2016-2017'>Repo with code can be found here</ExternalLink></p>
+            <p><ExternalLink url='https://github.com/jcharry/JavaScript-Club-ITP-2016-2017'>Repository for workshops</ExternalLink></p>
+            <h2>React</h2>
+            <p>During ITP Unconference 2017 I led a several hour React workshop to teach the basics of JSX, transpiling with babel and bundling with webpack, and the beginnings of a basic react app.</p>
+            <p><ExternalLink url='https://github.com/jcharry/React_Unconference_2017'>Repository for workshop</ExternalLink></p>
+            <h2>VIM</h2>
+            <p>My love of vim is no secret, so I also taught a workshop on VIM during the 2017 ITP Unconference.</p>
+            <p><ExternalLink url='https://docs.google.com/presentation/d/19xVcA15k7yA4wWEz3LA2l7qjBQUCLKQkN5e2y4rE6w8/pub?start=false&loop=false&delayms=3000'>Presentation</ExternalLink></p>
+
         </div>,
     pds:
         <div>

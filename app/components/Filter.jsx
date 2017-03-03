@@ -10,11 +10,11 @@ class Filter extends React.Component {
         const { projectListFilter } = this.props;
         let items = [
                 { key: 'all', data: {text: 'All', isOn: true }},
+                { key: 'web', data: {text: 'Web', isOn: false }},
+                { key: 'apps', data: {text: 'Apps', isOn: false }},
                 { key: 'teaching', data: {text: 'Teaching', isOn: false }},
                 { key: 'physical', data: {text: 'Physical', isOn: false }},
                 { key: 'visual', data: {text: 'Visual', isOn: false }},
-                { key: 'web', data: {text: 'Web', isOn: false }},
-                { key: 'apps', data: {text: 'Apps', isOn: false }},
                 { key: 'experiments', data: {text: 'Experiments', isOn: false }}
         ].map(item => {
             return {

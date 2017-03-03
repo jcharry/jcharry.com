@@ -2,6 +2,7 @@ import React from 'react';
 import * as redux from 'redux';
 import { connect } from 'react-redux';
 import Pixi from 'pixi.js';
+// import Matter from 'matter-js';
 
 import * as actions from 'app/actions/actions';
 import Tween from 'app/lib/Tween';
@@ -18,69 +19,47 @@ export class Canvas extends React.Component {
         this.tweens = [];
         this.move = this.move.bind(this);
         Pixi.utils._saidHello = true;
+
+        // Matter Stuff
+        //     var Engine = Matter.Engine,
+        // Render = Matter.Render,
+        // Runner = Matter.Runner,
+        // Composites = Matter.Composites,
+        // Common = Matter.Common,
+        // MouseConstraint = Matter.MouseConstraint,
+        // Mouse = Matter.Mouse,
+        // World = Matter.World,
+        // Query = Matter.Query,
+        // Svg = Matter.Svg,
+        // Bodies = Matter.Bodies;
+
+        // create engine
+        this.engine = Matter.Engine.create(),
+        this.world = this.engine.world;
+
+        Matter.Engine.run(this.engine);
     }
 
     // Pixi.js animation loop
     animate(time) {
-        var that = this;
-        // this.system.update();
-        this.tweens.forEach((tween) => {
-            tween.update(time);
-            tween.propsToAnimate.forEach((prop) => {
-                if (prop === 'scale') {
-                    that.me.sprite.scale.set(tween.scale);
-                } else {
-                    that.me.sprite[prop] = tween[prop];
-                }
-            });
+        this.frame = requestAnimationFrame(this.animate);
+
+        this.myFaceSprite.position = this.myFacePhysics.position;
+        this.myFaceSprite.rotation = this.myFacePhysics.angle;
+
+        Object.keys(this.walls).forEach(pos => {
+            let wall = this.walls[pos].physics;
+            // this.graphics.lineStyle(2, 0x0000FF, 1);
+            this.graphics.beginFill(0xdddddd, 1);
+            let x = wall.bounds.min.x;
+            let y = wall.bounds.min.y;
+            let width = wall.bounds.max.x - x;
+            let height = wall.bounds.max.y - y;
+            this.graphics.drawRect(x, y, width, height);
         });
 
-        // Check me for shaking, if not shaking
-        // count idle time...if idle time
-        // hits a threshold, then trigger a shake
-        if (this.me.isShaking) {
-            this.me.idleTime = 0;
-        } else {
-            this.me.idleTime += 1;
-
-            if (this.me.idleTime > this.me.timeToShake) {
-                this.me.shake();
-            }
-        }
-
-        //this.drawBackground(time);
-
         this.renderer.render(this.stage);
-        this.frame = requestAnimationFrame(this.animate);
     }
-
-    // setupGraphics() {
-    //     this.graphics = new PIXI.Graphics();
-    // }
-
-    // cantor(x, y, len) {
-    //     y += 20;
-    //     this.graphics.moveTo(x, y);
-    //     this.graphics.lineTo(x + len, y);
-    //
-    //     if (len > 1) {
-    //         var randomHex = '0x'+Math.floor(Math.random()*16777215).toString(16);
-    //         this.graphics.lineStyle(2, randomHex, 1);
-    //         this.cantor(x, y, len / 3);
-    //         this.cantor(x + len*2/3, y, len/3);
-    //     }
-    // }
-    // drawCircle(x, y, r) {
-    //     this.graphics.drawCircle(x, y, r);
-    //
-    //     r = r/2;
-    //     if (r > 2) {
-    //         //this.drawCircle(x - r, y, r );
-    //         //this.drawCircle(x + r, y, r );
-    //         this.drawCircle(x, y + r, r );
-    //         this.drawCircle(x, y - r, r );
-    //     }
-    // }
 
     drawBackground(time) {
         var x = 0;
@@ -93,11 +72,11 @@ export class Canvas extends React.Component {
 
     componentDidMount() {
         var { dispatch } = this.props;
+        console.log('canvas amounted');
 
         var h = window.innerHeight;
         var w = window.innerWidth;
         this.renderer = PIXI.autoDetectRenderer(w, h, {transparent: true, antialias: true});
-        // this.renderer.backgroundColor = 0xdddddd;
         this.renderer.backgroundColor = 0xeeeeee;
         this._elt.appendChild(this.renderer.view);
 
@@ -105,53 +84,44 @@ export class Canvas extends React.Component {
         this.stage = new PIXI.Container();
         this.stage.width = w;
         this.stage.height = h;
-        // this.graphics = new PIXI.Graphics();
-        //this.stage.interactive = true;
-        //this.stage.hitArea = new PIXI.Rectangle(0, 0, window.innerWidth, window.innerHeight);
 
-        //this.stage.on('mousedown', this.handleMouseDown);
-        //this.stage.addChild(this.graphics);
+        this.graphics = new PIXI.Graphics();
+        this.stage.addChild(this.graphics);
 
-        // this.bg = new PIXI.Sprite.fromImage(`/${require('../images/winter-sunset.png')}`);
-        // this.bg.width = w;
-        // this.bg.height = h;
-        // this.bg.alpha = 0.5;
-        // this.bg.x = window.innerWidth / 2;
-        // this.bg.y = window.innerHeight / 2;
-        // this.bg.anchor.x = 0.5;
-        // this.bg.anchor.y = 0.5;
-        // this.stage.addChild(this.bg);
-        //this.me.sprite.zOrder = 100;
-        window.addEventListener('resize', this.handleWindowResize);
+        this.mouse = Matter.Mouse.create(this.renderer.view);
+        this.mouseConstraint = Matter.MouseConstraint.create(this.engine, {
+            mouse: this.mouse,
+            constraint: {
+                stiffness: 0.2
+            }
+        });
 
-        // this.system = particleSystem(this.stage);
-        // var numParticles = 50;
-        // var particleDist = (window.innerWidth - 10) / numParticles;
-        // for (var i = 0; i < numParticles; i++) {
-            // this.system.addParticle(i * particleDist, Math.random() * 100 + 30, Math.random() * 10 + 8);
-        // }
-        // this.stage.addChild(this.system.graphics);
-        // window.particleSystem = this.system;
-        this.me = new MyFace(this.stage, this.tweens, dispatch);
-        // this.system.addCollider(this.me.sprite);
+        Matter.World.add(this.world, this.mouseConstraint);
 
-        this.drawBackground();
+        this.myFacePhysics = Matter.Bodies.circle(500, 20, 25, {restitution: 1});
+        this.walls = {
+            left: {
+                physics: Matter.Bodies.rectangle(300, this.renderer.height / 2, 10, this.renderer.height, {isStatic: true})
+            },
+            right: {
+                physics: Matter.Bodies.rectangle(this.renderer.width - 8, this.renderer.height / 2, 10, this.renderer.height, {isStatic: true}),
+            },
+            bottom: {
+                physics: Matter.Bodies.rectangle(300 + (this.renderer.width - 300) / 2, this.renderer.height - 5, this.renderer.width - 300, 10, {isStatic: true})
+            },
+            top: {
+                physics: Matter.Bodies.rectangle(300 + (this.renderer.width - 300) / 2, 0, this.renderer.width - 300, 10, {isStatic: true})
+            }
+        };
 
-        //this.system.applyForce({x: -0.01, y:-0.01});
-        // Sets up tweens for entering the screen
-        // shoudl only run once on intial component load
-        //this.me.enter();
-        //setInterval(() => {
-            //this.system.applyForce({x: 0.05*forceDir});
-            //setTimeout(() => {
-                //this.system.setAcceleration({x: 0});
-            //},5000);
-            //forceDir = -forceDir;
-        //}, 10000);
+        Matter.World.add(this.world, [this.walls.left.physics, this.walls.right.physics, this.walls.bottom.physics, this.walls.top.physics, this.myFacePhysics]);
 
-        var that = this;
-        // requestAnimationFrame(this.animate);
-        // this.move();
+        this.myFaceSprite = new PIXI.Sprite.fromImage('/images/profile_clipped.png');
+        this.myFaceSprite.width = this.myFacePhysics.circleRadius * 2;
+        this.myFaceSprite.height = this.myFacePhysics.circleRadius * 2;
+        this.myFaceSprite.anchor.x = 0.5;
+        this.myFaceSprite.anchor.y = 0.5;
+        this.stage.addChild(this.myFaceSprite);
     }
 
     move() {
@@ -176,24 +146,11 @@ export class Canvas extends React.Component {
         }
     }
 
-    componentDidUpdate(prevProps) {
-        var { currentPage } = this.props;
-        this.me.currentPage = currentPage;
-
-        if (prevProps.currentPage !== currentPage) {
-            this.move();
-        }
-    }
-
-    // handleMouseDown(e) {
-    //     e.stopPropagation();
-    // }
-
     handleWindowResize(e) {
-        let { currentPage } = this.props;
-        if (currentPage === 'home') {
-            this.me.homePage();
-        }
+        // let { currentPage } = this.props;
+        // if (currentPage === 'home') {
+        //     this.me.homePage();
+        // }
         this.renderer.view.width = window.innerWidth;
         this.renderer.view.height = window.innerHeight;
         this.renderer.resize(window.innerWidth, window.innerHeight);
