@@ -3,7 +3,7 @@
     width: 100vw;
     /*position: fixed;*/
     top:0;
-    left: 0;
+    left: 300px;
     margin: 0;
     padding: 0;
     position: fixed;
@@ -11,7 +11,19 @@
     // overflow-y: hidden;
 
     canvas {
-        position: fixed;
-        // overflow: hidden;
+        position: absolute;
+    }
+
+    .buttons {
+        .selected {
+            box-shadow: 0 0 10px 4px $link-color;
+        }
+        display: flex;
+        height: 50px;
+        img {
+            width: 30px;
+            height: 30px;
+            margin: 10px;
+        }
     }
 }

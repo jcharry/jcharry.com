@@ -8,8 +8,6 @@ import $ from 'jquery';
 
 import * as actions from 'app/actions/actions';
 
-// import Canvas from 'app/components/Canvas';
-
 export class Main extends React.Component {
     constructor(props) {
         super(props);
@@ -35,7 +33,6 @@ export class Main extends React.Component {
         const { loaded } = this.state;
         return (
             <div className='main'>
-                {/* {loaded && <Canvas />} */}
                 {this.props.children}
             </div>
         );

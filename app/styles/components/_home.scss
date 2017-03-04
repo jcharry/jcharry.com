@@ -1,7 +1,8 @@
 .home-text {
     width: 100vw;
     display: flex;
-    margin-left: 10px;
+    // margin-left: 10px;
+    margin: 0;
     flex-direction: column;
     padding-top: 70vh;
     // justify-content: ;
@@ -17,6 +18,7 @@
 
     h1 {
         font-size: 1rem;
+        margin-left: 5px;
     }
     span {
         font-size: 1rem;
@@ -27,7 +29,7 @@
         padding: 0 5rem 0 0;
         /* width: 50vw; */
         max-width: 600px;
-        margin: 0;
+        margin-left: 5px;
         font-size: 1.1rem;
     }
 
@@ -45,6 +47,7 @@
 
     p:last-child {
         margin-top: 20px;
+        margin-left: 5px;
         font-size: 1rem;
     }
 }

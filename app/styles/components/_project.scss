@@ -15,11 +15,12 @@
     // max-width: 200px;
     // min-width: 150px;
     width: 60%;
+    transition: box-shadow 0.5s;
 
     display: flex;
     // flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    // justify-content: space-between;
     text-decoration: none;
 
     .prj-text {
@@ -27,9 +28,42 @@
         // flex-direction: column;
         padding: 0 1rem;
         word-break: break-word;
+        flex: 1 1 auto;
+
+        .project-date {
+            display: flex;
+            justify-content: space-between;
+
+            p:last-child {
+                text-align:right;
+            }
+            // float: right;
+        }
+        .project-tech {
+            display: flex;
+            // justify-content: center;
+            p {
+                background-color: $link-color;
+                width: auto;
+
+                padding: 0.3rem;
+                border-radius: 30px;
+                color: white;
+                margin: 5px;
+                margin-left: 0;
+                font-size: 0.6rem;
+                flex: 0 0 27%;
+
+                span {
+                    width: 100%;
+                    text-align: center;
+                }
+            }
+        }
     }
     .project-item-title{
         font-size: 1.1rem;
+        color: $link-color;
     }
     .project-item-subheader {
         font-size: 0.8rem;
@@ -174,9 +208,12 @@
 
 .project:hover {
     /* background-color: $background-highlight; */
-    p, h3 {
-        color: $link-color;
-    }
+    // p, h3 {
+    //     color: $link-color;
+    // }
+    // box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    // box-shadow: inset 0 0 1em rgba(0, 0, 0, 0.2);
+    box-shadow: inset 0 0 1em $link-color;
 }
 .project:hover:after {
     content: '';

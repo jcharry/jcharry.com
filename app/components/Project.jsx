@@ -52,6 +52,13 @@ export class Project extends React.Component {
                         <div className='prj-text'>
                             <h3 className='project-item-title'>{project.title}</h3>
                             <p className='project-item-subheader'>{project.blurb}</p>
+                            <div className='project-tech'>
+                                {project.tech.map((tech, i) => <p key={`${tech}-${i}`} className='project-tech'><span>{tech}</span></p>)}
+                            </div>
+                            <div className='project-date'>
+                                <p><em>{project.category}</em></p>
+                                <p><em>{project.date}</em></p>
+                            </div>
                         </div>
                 </ExternalLink>
             );
@@ -66,6 +73,13 @@ export class Project extends React.Component {
                         <div className='prj-text'>
                             <h3 className='project-item-title'>{project.title}</h3>
                             <p className='project-item-subheader'>{project.blurb}</p>
+                            <div className='project-tech'>
+                                {project.tech.map((tech, i) => <p key={`${tech}-${i}`} className='project-tech'><span>{tech}</span></p>)}
+                            </div>
+                            <div className='project-date'>
+                                <p><em>{project.category}</em></p>
+                                <p><em>{project.date}</em></p>
+                            </div>
                         </div>
                 </Link>
                 );

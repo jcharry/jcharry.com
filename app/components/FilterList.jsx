@@ -28,7 +28,7 @@ class FilterList extends React.Component {
             return {
                 ...item,
                 style: {
-                    height: spring(30, presets.gentle),
+                    height: spring(24, presets.gentle),
                     opacity: spring(1, presets.gentle),
                 }
             };

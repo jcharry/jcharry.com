@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import FanMenu from 'app/components/FanMenu';
 import HomeMenu from 'app/components/HomeMenu';
+import Canvas from 'app/components/Canvas';
 
 import * as actions from 'app/actions/actions';
 
@@ -20,6 +21,7 @@ class Home extends React.Component {
         const { currentPage } = this.props;
         return (
             <div className='home'>
+                <Canvas />
                 <HomeMenu />
                 <div style={{opacity: currentPage === 'home' ? 1 : 0}} className='home-text' itemScope itemType='http://schema.org/Person'>
                     <h1>Hi, I'm <span itemProp='name'>Jamie Charry</span></h1>

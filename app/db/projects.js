@@ -26,7 +26,8 @@ export default {
         date: 'ITP | SPRING 2017',
         id: 'hundreddays',
         projectLink: 'https://100daysofalgorithms.tumblr.com/',
-        externalLink: true
+        externalLink: true,
+        tech: ['javascript', 'd3']
     },
     javascriptworkshops: {
         title: 'Javascript Workshops',
@@ -35,7 +36,8 @@ export default {
         imgsrc: 'projects/javascriptworkshops/javascript.gif',
         date: 'FALL 2016',
         id: 'javascriptworkshops',
-        projectLink: 'https://github.com/jcharry/JavaScript-Club-ITP-2016-2017'
+        projectLink: 'https://github.com/jcharry/JavaScript-Club-ITP-2016-2017',
+        tech: ['javascript', 'node', 'react']
     },
     pds: {
         title: 'Digital Prints',
@@ -45,6 +47,7 @@ export default {
         date: 'ITP | FALL 2016',
         id: 'pds',
         projectLink: 'https://github.com/jcharry/programming-design-systems-projects',
+        tech: ['javascript', 'rune.js']
     },
     sasscan: {
         title: "Sasscan",
@@ -54,7 +57,8 @@ export default {
         date: "ITP | SPRING 2016",
         id: "sasscan",
         projectLink: "https://vimeo.com/164219386",
-        credits: "Jamie Charry & Dana Abrassart"
+        credits: "Jamie Charry & Dana Abrassart",
+        tech: ['raspi', 'python', 'javascript']
     },
     tale: {
         title:"Tale of <user_defined_location>",
@@ -66,6 +70,7 @@ export default {
         projectLink:"http://tale.town",
         documentationLink: "http://itp.jcharry.com/2016/05/05/756/",
         credits: "Jamie Charry. MAY 2016",
+        tech: ['python', 'flask']
     },
     ingredients: {
         title:"What's in my food?",
@@ -79,7 +84,8 @@ export default {
         projectLink:"https://vimeo.com/175415250",
         documentationLink: ["http://itp.jcharry.com/2016/03/07/whats-in-my-food-midterm-presentation/","http://itp.jcharry.com/2016/02/25/whats-in-my-food-pt-2-mockups/","http://itp.jcharry.com/2016/02/23/whats-in-my-food-pt-1/"],
         credits: "Jamie Charry. JUL 2016",
-        longdesc:""
+        longdesc:"",
+        tech: ['javascript', 'phonegap']
     },
     // brasslamp: {
     //     title: "Brass + Walnut Lamp",
@@ -103,7 +109,8 @@ export default {
         projectLink:"http://cocoa.jcharry.com",
         documentationLink: "",
         credits: "An ITP Project by Jamie Charry. Feb 2016",
-        longdesc:""
+        longdesc:"",
+        tech: ['javascript']
     },
     // eafus: {
     //     title:"EAFUS Twitter Bot",
@@ -127,7 +134,8 @@ export default {
         id: "traceroute",
         documentationLink: "http://itp.jcharry.com/2016/09/19/traceroute/",
         projectLink: 'http://itp.jcharry.com/traceroute/',
-        externalLink: true
+        externalLink: true,
+        tech: ['javascript', 'd3']
     },
     plasmicreflections: {
         title:"Plasmic Reflection",
@@ -140,7 +148,8 @@ export default {
         id: "plasmicreflections",
         documentationLink:"http://itp.jcharry.com/2015/12/14/plasmic-reflections-final-documentation/",
         credits: "An ITP Project by Jamie Charry & Ella Dagan. Dec 2015",
-        longdesc:""
+        longdesc:"",
+        tech: ['arduino', 'p5.js']
     },
     // quppled: {
     //     title: "Quppled",
@@ -168,7 +177,8 @@ export default {
         id:"qad",
         projectLink:"http://questionaday.herokuapp.com/",
         documentationLink: "http://itp.jcharry.com/2015/12/01/public-question-a-day-final-documentation/",
-        credits: ""
+        credits: "",
+        tech: ['p5.js']
     },
     solarsynth: {
         title:"Solar Synthesizer",
@@ -182,7 +192,8 @@ export default {
         id: "solarsynth",
         projectLink:"http://itp.jcharry.com/solarSystem/",
         documentationLink: "http://itp.jcharry.com/2015/10/01/solar-music/",
-        credits: "By Jamie Charry"
+        credits: "By Jamie Charry",
+        tech: ['p5.js']
     },
     colorflowers: {
         title:"HSB Drawings",
@@ -195,7 +206,8 @@ export default {
         id:"colorflowers",
         projectLink:"http://itp.jcharry.com/colorFlowers",
         documentationLink: "",
-        credits: ""
+        credits: "",
+        tech: ['p5.js']
     },
     artistcomp: {
         title:"Artist Comparator",
@@ -209,7 +221,8 @@ export default {
         id:"artistcomp",
         projectLink:"http://itp.jcharry.com/artistComparator/",
         documentationLink: "",
-        credits: ""
+        credits: "",
+        tech: ['p5.js']
     }
     // particlesandwaves: {
     //     title:"Particles and Waves",
