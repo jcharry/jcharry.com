@@ -81,6 +81,7 @@ export class Project extends React.Component {
                                 <p><em>{project.date}</em></p>
                             </div>
                         </div>
+                        {project.badge && <img className='project-badge' src={project.badge} />}
                 </Link>
                 );
         }

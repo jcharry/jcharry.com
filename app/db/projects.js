@@ -149,7 +149,8 @@ export default {
         documentationLink:"http://itp.jcharry.com/2015/12/14/plasmic-reflections-final-documentation/",
         credits: "An ITP Project by Jamie Charry & Ella Dagan. Dec 2015",
         longdesc:"",
-        tech: ['arduino', 'p5.js']
+        tech: ['arduino', 'p5.js'],
+        badge: '/images/projects/plasmicreflections/blue-makey.png'
     },
     // quppled: {
     //     title: "Quppled",
