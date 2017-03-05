@@ -1,8 +1,11 @@
-var express = require('express');
-var app = express();
-var path = require('path');
-let nodemailer = require('nodemailer');
-let creds = require('./creds/email.json');
+const compression = require('compression');
+const express = require('express');
+const app = express();
+const path = require('path');
+const nodemailer = require('nodemailer');
+const creds = require('./creds/email.json');
+
+app.use(compression());
 
 // Heroku passes a port # as an environment var
 const PORT = process.env.PORT || 8081;

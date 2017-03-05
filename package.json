@@ -43,6 +43,7 @@
     "babel-register": "^6.23.0",
     "body-parser": "^1.15.2",
     "brfs": "1.4.3",
+    "compression": "^1.6.2",
     "copy-webpack-plugin": "^4.0.1",
     "css-loader": "0.23.1",
     "express": "4.13.4",
