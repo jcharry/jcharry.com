@@ -19,9 +19,10 @@ class Home extends React.Component {
 
     render() {
         const { currentPage } = this.props;
+
         return (
             <div className='home'>
-                <Canvas />
+                {!window.mobilecheck() && <Canvas />}
                 <HomeMenu />
                 <div style={{opacity: currentPage === 'home' ? 1 : 0}} className='home-text' itemScope itemType='http://schema.org/Person'>
                     <h1>Hi, I'm <span itemProp='name'>Jamie Charry</span></h1>
