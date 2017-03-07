@@ -3,6 +3,8 @@ import * as redux from 'redux';
 import { connect } from 'react-redux';
 import Matter from 'matter-js';
 
+import myFace from 'app/images/profile_clipped-60.png';
+
 import * as actions from 'app/actions/actions';
 
 export class Canvas extends React.Component {
@@ -52,10 +54,63 @@ export class Canvas extends React.Component {
         Matter.World.add(this.world, b);
     }
 
+    pointillism() {
+        const data = this.myFacePixelData.data;
+
+        let start = performance.now();
+
+        function componentToHex(c) {
+            var hex = c.toString(16);
+            return hex.length == 1 ? "0" + hex : hex;
+        }
+
+        function rgbToHex(r, g, b) {
+            return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
+        }
+
+        let step = 11;
+        let counter = 0;
+        let offsetX = 100;
+        let offsetY = 40;
+        let w = this._myFaceImg.width;
+        let h = this._myFaceImg.height;
+        for (let i = 0; i < data.length; i += step * 4) {
+            const r = data[i];
+            const g = data[i + 1];
+            const b = data[i + 2];
+            const a = data[i + 3];
+            if (r !== 0 || g !== 0 || b !== 0) {
+                // Create a Matter body, give it the color
+                let x = (i / 4) % w;
+                let y = Math.floor(i / 4 / w);
+                let body = Matter.Bodies.circle(x + offsetX, y + offsetY, 2, {
+                    enableSleeping: true,
+                    restitution: 0.5
+                });
+                // Matter.Body.setVelocity(body, Matter.Vector.create(3, 0));
+                let color = rgbToHex(r,g,b);
+                body.render.fillStyle = color;
+                body.render.strokeStyle = color;
+                Matter.World.add(this.world, body);
+                this.bodies.push(body);
+            }
+        }
+    }
+
     componentDidMount() {
         var { dispatch } = this.props;
-        console.log('canvas mounted');
 
+
+        this._myFaceImg.addEventListener('load', () => {
+            const width = this._myFaceImg.width;
+            const height = this._myFaceImg.height;
+            this._offscreenCanvas.width = width;
+            this._offscreenCanvas.height = height;
+
+            this._offscreenCanvas.getContext('2d').drawImage(this._myFaceImg, 0, 0, width, height);
+            this.myFacePixelData = this._offscreenCanvas.getContext('2d').getImageData(0, 0, width, height);
+            this.pointillism();
+        });
 
         var w = window.innerWidth - 300;
         var h = window.innerHeight - 50;
@@ -85,32 +140,31 @@ export class Canvas extends React.Component {
 
         Matter.World.add(this.world, this.mouseConstraint);
 
-        this.myFacePhysics = Matter.Bodies.circle(500, 20, 25, {restitution: 1});
+        // this.myFacePhysics = Matter.Bodies.circle(500, 20, 25, {restitution: 1});
         this.walls = {
             left: {
                 physics: Matter.Bodies.rectangle(0, this._canvas.height / 2, 10, this._canvas.height, {isStatic: true})
             },
             right: {
-                physics: Matter.Bodies.rectangle(this._canvas.width - 8, this._canvas.height / 2, 10, this._canvas.height, {isStatic: true}),
+                physics: Matter.Bodies.rectangle(this._canvas.width, this._canvas.height / 2, 10, this._canvas.height, {isStatic: true}),
             },
             bottom: {
-                physics: Matter.Bodies.rectangle(this._canvas.width / 2, this._canvas.height - 5, this._canvas.width, 10, {isStatic: true})
+                physics: Matter.Bodies.rectangle(this._canvas.width / 2, this._canvas.height, this._canvas.width, 10, {isStatic: true})
             },
             top: {
                 physics: Matter.Bodies.rectangle(this._canvas.width / 2, 0, this._canvas.width, 10, {isStatic: true})
             }
         };
 
-        this.bodies = this.bodies.concat([this.walls.left.physics, this.walls.right.physics, this.walls.bottom.physics, this.walls.top.physics, this.myFacePhysics]);
+        this.bodies = this.bodies.concat([this.walls.left.physics, this.walls.right.physics, this.walls.bottom.physics, this.walls.top.physics]);
 
-        Matter.World.add(this.world, [this.walls.left.physics, this.walls.right.physics, this.walls.bottom.physics, this.walls.top.physics, this.myFacePhysics]);
+        Matter.World.add(this.world, [this.walls.left.physics, this.walls.right.physics, this.walls.bottom.physics, this.walls.top.physics]);
 
         this.animate(16.666);
     }
 
     initializeEventListeners() {
         this._canvas.addEventListener('mousedown', (e) => {
-            console.log('mousedonw at ', this.mouse.mousedownPosition);
             let selected = this.state.selected;
             if (selected === 'rect' || selected === 'circle') {
                 this.addBody(selected);
@@ -138,7 +192,6 @@ export class Canvas extends React.Component {
     }
 
     componentWillUnmount() {
-        console.log(this.frame);
         window.cancelAnimationFrame(this.frame);
         this.frame = null;
     }
@@ -180,7 +233,6 @@ export class Canvas extends React.Component {
 
     renderMatter() {
         // const { isPlaying, primativesPanelSelection, selectedObject } = this.props;
-        // console.log('rendering');
         const { isPlaying, selected } = this.state;
 
         // clear the canvas with a transparent fill, to allow the canvas background to show
@@ -205,6 +257,7 @@ export class Canvas extends React.Component {
             this.ctx.beginPath();
             const body = this.bodies[i];
             this.ctx.strokeStyle = body.render.strokeStyle;
+            this.ctx.fillStyle = body.render.fillStyle;
             this.ctx.lineWidth = 1;
             // if (body.id === selectedObject) {
                 // this.ctx.strokeStyle = 'green';
@@ -222,6 +275,7 @@ export class Canvas extends React.Component {
             this.ctx.lineTo(vertices[0].x, vertices[0].y);
 
             this.ctx.stroke();
+            this.ctx.fill();
         }
 
         for (let i = 0; i < this.constraints.length; i++) {
@@ -300,6 +354,8 @@ export class Canvas extends React.Component {
                     <img src='/images/Restart-48-black.png' onClick={this.reset} />
                 </div>
                 <canvas id='canvas' ref={c => this._canvas = c}/>
+                <canvas className='hide' id='offscreen-canvas' ref={c => this._offscreenCanvas = c} />
+                <img src={myFace} className='hide' ref={c => this._myFaceImg = c} />
             </div>
         );
     }
