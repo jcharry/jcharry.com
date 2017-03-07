@@ -68,7 +68,7 @@ export class Canvas extends React.Component {
             return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
         }
 
-        let step = 11;
+        let step = 9;
         let counter = 0;
         let offsetX = 100;
         let offsetY = 40;
@@ -83,9 +83,11 @@ export class Canvas extends React.Component {
                 // Create a Matter body, give it the color
                 let x = (i / 4) % w;
                 let y = Math.floor(i / 4 / w);
-                let body = Matter.Bodies.circle(x + offsetX, y + offsetY, 2, {
+                let body = Matter.Bodies.circle(x + offsetX, y + offsetY, 1, {
                     enableSleeping: true,
-                    restitution: 0.5
+                    restitution: 0.7,
+                    frictionAir: 0.3,
+                    // inertia: 100
                 });
                 // Matter.Body.setVelocity(body, Matter.Vector.create(3, 0));
                 let color = rgbToHex(r,g,b);
