@@ -52,12 +52,12 @@ export class CardList extends React.Component {
                     <div key='backend'>
                         <h3><pre><code>$ which backend</code></pre></h3>
                         <p>Node/Express/Webpack</p>
-                        <p>NoSQL - MongoDB (mongoose), Firebase</p>
+                        <p>NoSQL - MongoDB (mongoose)</p>
                         <p>Nginx, Linux/Unix</p>
                     </div>,
                     <div key='other'>
                         <h3><pre><code>$ what else</code></pre></h3>
-                        <p>Web Infrastructure, HTTP, REST, AJAX, Promises</p>
+                        <p>Web Infrastructure, HTTP, REST, AJAX</p>
                         <p>Git/Github, OOP design, Functional Paradigms</p>
                     </div>
                 ]

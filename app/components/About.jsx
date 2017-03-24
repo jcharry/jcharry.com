@@ -13,7 +13,6 @@ import ExternalLink from 'app/components/ExternalLink';
 export class About extends React.Component {
     constructor(props) {
         super(props);
-
     }
 
     getDefaultStyles() {
