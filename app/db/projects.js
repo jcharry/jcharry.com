@@ -1,14 +1,15 @@
 export default {
-    // fieldguide: {
-    //     title: 'Website Development - A Field Guide to Newtown Creek',
-    //     category: 'web',
-    //     blurb: ' I built the front end site. A project by Rebecca Lieberman, Nick Hubbard, and Marina Zurkow.',
-    //     imgsrc: 'projects/fieldguide/fieldguide.png',
-    //     date: 'SPRING 2017',
-    //     id: 'fieldguide',
-    //     projectLink: 'https://hidden-forest-32016.herokuapp.com/',
-    //     externalLink: true
-    // },
+    fieldguide: {
+        title: 'Front End Development - A Field Guide to Newtown Creek',
+        category: 'web',
+        blurb: 'A project by Rebecca Lieberman, Nick Hubbard, and Marina Zurkow, I contributed by building out the front end site.',
+        imgsrc: 'projects/fieldguide/fieldguide.png',
+        date: 'SPRING 2017',
+        id: 'fieldguide',
+        projectLink: 'http://www.newtowncreekfieldguide.com',
+        externalLink: true,
+        tech: ['react/redux']
+    },
     hundreddays: {
         title: '100 Days of Visualizing Algorithms',
         category: 'visual',
