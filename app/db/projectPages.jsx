@@ -79,7 +79,7 @@ export default {
             <h2>See it in action</h2>
             <p>Video courtesy of <ExternalLink url='http://armchair.guru/'>Dana Abrassart</ExternalLink></p>
             <div className='video-wrapper'>
-                <iframe src="https://player.vimeo.com/video/164219386" width="100%" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                <iframe src="https://player.vimeo.com/video/164219386" width="100%" frameBorder="0" allowfullscreen></iframe>
             </div>
             <p><a href="https://vimeo.com/164219386">sass/can</a> from <a href="https://vimeo.com/user13451363">Dana Abrassart</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
             <br />
@@ -127,7 +127,7 @@ export default {
             <p>Ever wonder what maltodextrin is and why its in your food? By simply taking a photo of an ingredients label, the user can explore what all those tricky ingredients are, where they come from, and why they're there in the first place.</p>
             <h2>Demo</h2>
             <div className='video-wrapper'>
-                <iframe src="https://player.vimeo.com/video/175415250" width="100%" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                <iframe src="https://player.vimeo.com/video/175415250" width="100%" frameBorder="0" allowfullscreen></iframe>
             </div>
             <p><a href="https://vimeo.com/175415250">What&#039;s in my Food?</a> from <a href="https://vimeo.com/jcharry">jcharry</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
             <h2>Technology</h2>
@@ -175,7 +175,7 @@ export default {
             <p>Blue Ribbon Winner at Makerfaire 2016!</p>
             <p>A unique and personal experience, the Plasmic Reflection mirror encourages the user to fully inhabit their body and mind.  Developed over the course of several weeks at NYU ITP, the mirror acts as an extension of the user's heartbeat, allowing them to enter a meditative place where they are invited to look inward, or find silence.  Ultimately, the experience is up to the viewer.</p>
             <div className='video-wrapper'>
-                <iframe src="https://player.vimeo.com/video/149091016" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                <iframe src="https://player.vimeo.com/video/149091016" frameBorder="0" allowfullscreen></iframe>
             </div>
             <p><a href="https://vimeo.com/149091016">Plasmic Reflections</a> from <a href="https://vimeo.com/jcharry">jcharry</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
             <h2>Technology</h2>
@@ -190,7 +190,7 @@ export default {
             <p className='project-date'>SUMMER 2014</p>
             <p>Double dating, an app for swingers, whatever. This prototype was an opportunity to learn swift, while also theoretically providing an opportunity for couples to find an easier way to hang out. There's all kinds of dating apps, but not so many that address what happens after you've already found someone.  Hence, Quppled.</p>
             <div className='video-wrapper'>
-                <iframe src='https://player.vimeo.com/video/151353179' frameborder='0' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                <iframe src='https://player.vimeo.com/video/151353179' frameBorder='0' allowfullscreen></iframe>
             </div>
             <p><a href="https://vimeo.com/151353179">Quppled</a> from <a href="https://vimeo.com/jcharry">jcharry</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
             <h2>Technologies</h2>
